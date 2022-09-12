@@ -3,6 +3,7 @@
 ### Usage
 
 1. Clone this repo into your home directory
+
 `git clone `
 
 2. cd into .dotfiles directory
