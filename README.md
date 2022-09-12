@@ -1,6 +1,6 @@
-### DOT Files
+## DOT Files
 
-## Usage
+### Usage
 
 1. Clone this repo into your home directory
 `git clone `
