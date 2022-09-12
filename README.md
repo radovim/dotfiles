@@ -2,19 +2,16 @@
 
 ### Usage
 
-1. Clone this repo into your home directory
-`git clone `
-
+1. Install [GNU Stow](https://www.gnu.org/software/stow/) tool
+2. Clone this repo inside your home directory
 2. cd into .dotfiles directory
+4. Execute `stow .` inside .dotfiles directory to soft link all dotfile
 
-`cd .dotfiles`
-
-3. Install gnu stow programm
-
-`sudo pacman -S stow`
-
-4. Execute folowing command inside .dotfiles directory to soft link all dotfile
-
-`stow .`
-
+```
+git clone 
+sudo pacman -S stow
+git clone
+cd .dotfile 
+stow .
+```
 ---
