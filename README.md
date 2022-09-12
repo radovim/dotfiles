@@ -8,7 +8,6 @@
 4. Execute `stow .` inside .dotfiles directory to soft link all dotfile
 
 ```
-git clone 
 sudo pacman -S stow
 git clone git@gitlab.com:vulkano22/dotfiles.git /home/$USER/.dotfiles
 cd .dotfile 
