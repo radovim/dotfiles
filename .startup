@@ -1,0 +1,23 @@
+#!/bin/bash
+
+/home/$USER/software/linux_scripts/set_displays.sh &
+amixer -q sset Capture nocap 100% &
+feh --bg-scale /home/$USER/Pictures/Wallpapers/fakurian-design-E8Ufcyxz514-unsplash.jpg &
+
+#$(sleep 4s && "$HOME/.config/polybar/launch.sh") &
+
+#Set screen lock timeout
+xautolock -time 5 -locker slock &
+
+#Turn off screen saver and disable DPMS
+xset s off -dpms &
+
+#barriers -c ~/.barrier/server.conf --disable-crypto & 
+teams &
+#thunderbird &
+mailspring &
+picom --experimental-backends &
+nextcloud --background &
+udiskie &
+bluetoothctl scan on &
+dunst &

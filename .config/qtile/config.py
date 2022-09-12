@@ -42,7 +42,7 @@ from libqtile.command.client import InteractiveCommandClient
 mod = "mod4"
 terminal = 'st'
 dmenu = 'dmenu_run -c -l 10'
-power_menu = f'/home/{getlogin()}/software/scripts/dmenu_power'
+power_menu = f'/home/{getlogin()}/software/linux_scripts/dmenu_power'
 rofi_launcher = '/home/phill/.config/rofi/bin/launcher_misc'
 
 keys = [
@@ -98,9 +98,9 @@ keys = [
     Key([mod, "shift"], "f", lazy.spawn('firefox'), desc="Start firefox"),
     Key([], "XF86MonBrightnessUp", lazy.spawn('brightnessctl s 5%+'), desc="Screen brightness up"),
     Key([], "XF86MonBrightnessDown", lazy.spawn('brightnessctl s 5%-'), desc="Screen brightness down"),
-    Key([mod], "space", lazy.spawn('changekbmap'), desc="Change keyboard layout"),
-    Key([mod], "s", lazy.spawn(f'/home/{getlogin()}/software/scripts/slock_run'), desc="Lock screen with slock"),
-    Key([mod, "shift"], "s", lazy.spawn(f'/home/{getlogin()}/software/scripts/flameshot_gui_run'), desc="Take a screen shot"),
+    Key([mod], "space", lazy.spawn(f'/home/{getlogin()}/software/linux-scripts/changekbmap.sh'), desc="Change keyboard layout"),
+    Key([mod], "s", lazy.spawn('slock'), desc="Lock screen with slock"),
+    Key([mod, "shift"], "s", lazy.spawn('flameshot gui'), desc="Take a screen shot"),
     Key([mod], "r", lazy.spawn(rofi_launcher), desc="Start rofi"),
     Key([mod, "shift"], "m", lazy.spawn('amixer -q sset Capture toggle'), desc="Toggle mic"),
 ]
