@@ -40,10 +40,11 @@ from libqtile.command.client import InteractiveCommandClient
 
 
 mod = "mod4"
-terminal = 'st'
-dmenu = 'dmenu_run -c -l 10'
-power_menu = f'/home/{getlogin()}/software/linux_scripts/dmenu_power'
-rofi_launcher = '/home/phill/.config/rofi/bin/launcher_misc'
+terminal = "st"
+dmenu = "dmenu_run -c -l 10"
+power_menu = f"/home/{getlogin()}/software/linux-scripts/dmenu_power"
+rofi_launcher = f"/home/{getlogin()}/.config/rofi/bin/launcher_misc"
+
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -441,12 +442,12 @@ screens = [
                     ),
                 widget.KeyboardLayout(
                     display_map={'us': ' en', 'rs latin': ' sr', 'rs': ' ср'},
-                    mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn('changekbmap') },
+                    mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn(f"/home/{getlogin()}/software/linux-scripts/changekbmap.sh") },
                     update_interval = 1
                 ),
                 widget.TextBox(
                     text='',
-                    mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn(f'/home/{getlogin()}/software/scripts/toggle_picom.sh') },
+                    mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn(f'/home/{getlogin()}/software/linux-scripts/toggle_picom.sh') },
                     ),
                 widget.WidgetBox(
                     widgets=[
@@ -460,7 +461,7 @@ screens = [
                         widget.TextBox(
                             text=' 禍',
                             fontsize=18,
-                            mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn(f'/home/{getlogin()}/software/scripts/dmenu_serial')},
+                            mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn(f'/home/{getlogin()}/software/linux-scripts/dmenu_serial')},
                             padding=4,
                         ),
                     ],
