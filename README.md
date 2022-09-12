@@ -10,8 +10,9 @@
 ```
 git clone 
 sudo pacman -S stow
-git clone
+git clone git@gitlab.com:vulkano22/dotfiles.git /home/$USER/.dotfiles
 cd .dotfile 
 stow .
 ```
+
 ---
