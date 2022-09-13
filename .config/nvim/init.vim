@@ -20,8 +20,6 @@ set noswapfile "disable creating swap file
 
 hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
 
-colorscheme "nightfox"
-
 command WQ wq
 command Wq wq
 command W w
@@ -74,7 +72,7 @@ call plug#begin()
  Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
-colorscheme onedark
+colorscheme dracula
 
 "=================
 "    NerdTree    |
