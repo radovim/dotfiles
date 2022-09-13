@@ -47,8 +47,9 @@ power_menu = f"/home/{getlogin()}/software/linux-scripts/dmenu_power"
 rofi_launcher = f"/home/{getlogin()}/.config/rofi/bin/launcher_misc"
 
 #pactl source and sind id_s
-sink=2
-source=1
+sink = 2
+source = 1
+volume_color = "#000000"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -302,15 +303,15 @@ def getvolume():
     if (volume <= 0) or (mute == "yes"):
         icon = "婢"
         volume = "M"
-    elif volume <= 30:
+    elif (volume <= 30):
         icon = "奄"
         volume=f"{volume}%"
-    elif volume <= 80:
+    elif (volume <= 80):
         icon = "奔"
         volume=f"{volume}%"
-    elif volume > 80:
+    elif (volume > 80):
         icon = "墳"
-        if volume > 150:
+        if (volume > 150):
             result=subprocess.run(["pactl", "set-sink-volume", f"{sink}", "150%"], capture_output=True, text=True)
             volume="150%"
         else:
@@ -407,7 +408,7 @@ screens = [
                     padding=4,
                 ),
                 widget.GenPollText(
-                    func=lambda: getvolume(),
+                    func = lambda: getvolume(),
                     padding=4,
                     update_interval=0.3,
                     mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn(f'pactl set-sink-mute {sink} toggle'), 
