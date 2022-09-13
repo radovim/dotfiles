@@ -39,12 +39,16 @@ from libqtile.command.client import InteractiveCommandClient
 
 
 
+
 mod = "mod4"
-terminal = "st"
+terminal = "alacritty"
 dmenu = "dmenu_run -c -l 10"
 power_menu = f"/home/{getlogin()}/software/linux-scripts/dmenu_power"
 rofi_launcher = f"/home/{getlogin()}/.config/rofi/bin/launcher_misc"
 
+#pactl source and sind id_s
+sink=2
+source=1
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -74,7 +78,7 @@ keys = [
     Key([mod], "f", lazy.window.toggle_floating()),
     Key([], "F11", lazy.window.toggle_fullscreen()),
 
-    # Toggle between split and unsplit sides of stack.
+    # To ggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
@@ -90,9 +94,9 @@ keys = [
     Key([mod, "shift"], "p", lazy.spawn(power_menu), desc="Run dmenu"),
 
     # My key bindings
-    Key([], "XF86AudioRaiseVolume", lazy.spawn('pulsemixer --change-volume +5'), desc="Raise volume"),
-    Key([], "XF86AudioLowerVolume", lazy.spawn('pulsemixer --change-volume -5'), desc="Lower volume"),
-    Key([], "XF86AudioMute", lazy.spawn('pulsemixer --toggle-mute'), desc="Toggle mute volume"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn(f'pactl set-sink-volume {sink} +5%'), desc="Raise volume"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn(f'pactl set-sink-volume {sink} -5%'), desc="Lower volume"),
+    Key([], "XF86AudioMute", lazy.spawn(f'pactl set-sink-mute {sink} toggle'), desc="Toggle mute volume"),
     Key([], "Print", lazy.spawn('flameshot gui'), desc="Make a screenshot with flameshot app"),
 
     Key([mod, "shift"], "b", lazy.spawn('brave'), desc="Start brave browser"),
@@ -103,7 +107,7 @@ keys = [
     Key([mod], "s", lazy.spawn('slock'), desc="Lock screen with slock"),
     Key([mod, "shift"], "s", lazy.spawn('flameshot gui'), desc="Take a screen shot"),
     Key([mod], "r", lazy.spawn(rofi_launcher), desc="Start rofi"),
-    Key([mod, "shift"], "m", lazy.spawn('amixer -q sset Capture toggle'), desc="Toggle mic"),
+    Key([mod, "shift"], "m", lazy.spawn(f'pactl set-source-mute {source} toggle'), desc="Toggle mic"),
 ]
 
 
@@ -287,21 +291,34 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 def getvolume():
-    result=subprocess.run(["amixer", "sget", "Master"], capture_output=True, text=True)
-    pattern = re.compile("(?<=\[)[0-9]{1,3}(?=%\])")
+    result=subprocess.run(["pactl", "get-sink-volume", f"{sink}"], capture_output=True, text=True)
+    pattern = re.compile("[0-9]{1,3}(?=%)")
     volume = int(pattern.search(result.stdout)[0])
 
-    if (volume <= 0) or ("[off]" in result.stdout):
+    result=subprocess.run(["pactl", "get-sink-mute", f"{sink}"], capture_output=True, text=True)
+    pattern = re.compile("(?<=Mute:\s)[a-z]{2,3}")
+    mute = pattern.search(result.stdout)[0]
+
+    if (volume <= 0) or (mute == "yes"):
         icon = "婢"
         volume = "M"
     elif volume <= 30:
         icon = "奄"
+        volume=f"{volume}%"
     elif volume <= 80:
         icon = "奔"
+        volume=f"{volume}%"
     elif volume > 80:
         icon = "墳"
+        if volume > 150:
+            result=subprocess.run(["pactl", "set-sink-volume", f"{sink}", "150%"], capture_output=True, text=True)
+            volume="150%"
+        else:
+            volume=f"{volume}%"
+    
 
     return f"{icon} {volume}"
+
 
 def getwlan(flag, interface):
     command = "nmcli c show --active"
@@ -323,10 +340,11 @@ def getwlan(flag, interface):
             return "  睊  ",
 
 def getmic():
-    result = subprocess.run(["amixer", "sget", "Capture"], capture_output=True, text=True)
-    if "[on]" in result.stdout:
+    result=subprocess.run(["pactl", "get-source-mute", f"{source}"], capture_output=True, text=True)
+
+    if "no" in result.stdout:
         return ""
-    elif "[off]" in result.stdout:
+    elif "yes" in result.stdout:
         return ""
     else:
         return "err"
@@ -392,9 +410,9 @@ screens = [
                     func=lambda: getvolume(),
                     padding=4,
                     update_interval=0.3,
-                    mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn('pulsemixer  --toggle-mute'), 
-                                      'Button4': lambda: qtile.cmd_spawn('pulsemixer --change-volume +3'),
-                                      'Button5': lambda: qtile.cmd_spawn('pulsemixer --change-volume -3')
+                    mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn(f'pactl set-sink-mute {sink} toggle'), 
+                                      'Button4': lambda: qtile.cmd_spawn(f'pactl set-sink-volume {sink} +3%'),
+                                      'Button5': lambda: qtile.cmd_spawn(f'pactl set-sink-volume {sink} -3%')
                                     },
                 ),
                 # widget.PulseVolume(
@@ -407,7 +425,7 @@ screens = [
                 widget.GenPollText(
                     func=lambda: getmic(),
                     update_interval=1,
-                    mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn('amixer -q sset Capture toggle')}
+                    mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn(f'pactl set-source-mute {source} toggle')}
                 ),
                 widget.WidgetBox(
                     #text_closed = getwlan("close", "wlan0"),
