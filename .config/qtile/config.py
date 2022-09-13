@@ -108,7 +108,7 @@ keys = [
 
 
 color = {
-    "background":   '1E3163',
+    "background":   '2c2c2c',
     "white":        'ffffff',
     "cyan":         '8be9fd',
     "deepskyblue":  '00bfff',
@@ -475,9 +475,9 @@ screens = [
                     ),
             ],
             background=color["background"],
-            margin = [4,6,0,6],
+            margin = [0,0,0,0],
             opacity = 1,
-            size=26
+            size=24
         ),
     ),
 ]

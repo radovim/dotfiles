@@ -71,3 +71,8 @@ alias flash_ptc05='STM32_Programmer_CLI -c port=swd -d ~/Melexis/PTC05_PXI/Relea
 alias weather='curl wttr.in'
 alias rsync='rsync -av --info=progress2 --info=name0'
 alias fd='fd --hidden'
+alias alacrittyconf='nvim ~/.dotfiles/.config/alacritty/alacritty.yml'
+alias nvimconf='nvim ~/.dotfiles/.config/nvim/init.vim'
+alias qtileconf='nvim ~/.dotfiles/.config/qtile/config.py'
+alias picomconf='nvim ~/.dotfiles/.config/picom/picom.conf'
+alias mlx-dev='cd ~/Melexis/PTC05_PXI; nvim'
