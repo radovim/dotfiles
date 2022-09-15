@@ -2,7 +2,7 @@
 
 /home/$USER/software/linux_scripts/set_displays.sh &
 amixer -q sset Capture nocap 100% &
-feh --bg-scale /home/$USER/Pictures/Wallpapers/fakurian-design-E8Ufcyxz514-unsplash.jpg &
+feh --bg-scale /home/$USER/Pictures/Wallpapers/1586853730_nord-peeks.png &
 
 #$(sleep 4s && "$HOME/.config/polybar/launch.sh") &
 
@@ -13,11 +13,12 @@ xautolock -time 5 -locker slock &
 xset s off -dpms &
 
 #barriers -c ~/.barrier/server.conf --disable-crypto & 
-teams &
-#thunderbird &
+
 mailspring &
 picom --experimental-backends &
 nextcloud --background &
 udiskie &
 bluetoothctl scan on &
+blueman-applet &
 dunst &
+teams &

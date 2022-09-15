@@ -72,7 +72,7 @@ call plug#begin()
  Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
-colorscheme dracula
+colorscheme nord
 
 "=================
 "    NerdTree    |

@@ -34,10 +34,7 @@ from os import getlogin
 import nerdfonts as nf
 import subprocess
 import re
-
 from libqtile.command.client import InteractiveCommandClient
-
-
 
 
 mod = "mod4"
@@ -46,10 +43,8 @@ dmenu = "dmenu_run -c -l 10"
 power_menu = f"/home/{getlogin()}/software/linux-scripts/dmenu_power"
 rofi_launcher = f"/home/{getlogin()}/.config/rofi/bin/launcher_misc"
 
-#pactl source and sind id_s
-sink = 2
-source = 1
-volume_color = "#000000"
+default_sink = ""
+default_source = ""
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -94,12 +89,11 @@ keys = [
     Key([mod], "p", lazy.spawn(dmenu), desc="Run dmenu"),
     Key([mod, "shift"], "p", lazy.spawn(power_menu), desc="Run dmenu"),
 
-    # My key bindings
-    Key([], "XF86AudioRaiseVolume", lazy.spawn(f'pactl set-sink-volume {sink} +5%'), desc="Raise volume"),
-    Key([], "XF86AudioLowerVolume", lazy.spawn(f'pactl set-sink-volume {sink} -5%'), desc="Lower volume"),
-    Key([], "XF86AudioMute", lazy.spawn(f'pactl set-sink-mute {sink} toggle'), desc="Toggle mute volume"),
+    # Custom key bindings
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer sset Master 5%+"), desc="Raise volume"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer sset Master 5%-"), desc="Lower volume"),
+    Key([], "XF86AudioMute", lazy.spawn("amixer sset Master toggle"), desc="Toggle mute volume"),
     Key([], "Print", lazy.spawn('flameshot gui'), desc="Make a screenshot with flameshot app"),
-
     Key([mod, "shift"], "b", lazy.spawn('brave'), desc="Start brave browser"),
     Key([mod, "shift"], "f", lazy.spawn('firefox'), desc="Start firefox"),
     Key([], "XF86MonBrightnessUp", lazy.spawn('brightnessctl s 5%+'), desc="Screen brightness up"),
@@ -108,32 +102,31 @@ keys = [
     Key([mod], "s", lazy.spawn('slock'), desc="Lock screen with slock"),
     Key([mod, "shift"], "s", lazy.spawn('flameshot gui'), desc="Take a screen shot"),
     Key([mod], "r", lazy.spawn(rofi_launcher), desc="Start rofi"),
-    Key([mod, "shift"], "m", lazy.spawn(f'pactl set-source-mute {source} toggle'), desc="Toggle mic"),
+    Key([mod, "shift"], "m", lazy.spawn("amixer sset Capture toggle"), desc="Toggle mic"),
 ]
 
-
 color = {
-    "background":   '2c2c2c',
-    "white":        'ffffff',
-    "cyan":         '8be9fd',
-    "deepskyblue":  '00bfff',
-    "green":        '00ff7f',
-    "orange":	    'ffb86c',
-    "lightorange":  'ffa500',
-    "pink":	        'ff1493',
-    "purple":	    'bd93f9',
-    "red":	        'ff5555',
-    "lightred":     'ffaaaa',
-    "yellow":	    'ffff54'
+    "background":   '#3B4252',
+    "white":        '#ffffff',
+    "cyan":         '#8be9fd',
+    "deepskyblue":  '#00bfff',
+    "green":        '#00ff7f',
+    "orange":	    '#ffb86c',
+    "lightorange":  '#ffa500',
+    "pink":	        '#ff1493',
+    "purple":	    '#bd93f9',
+    "red":	        '#ff5555',
+    "lightred":     '#ffaaaa',
+    "yellow":	    '#ffff54',
+    "arch_blue":     '#1793d1'
 }
-
 
 # Groups
 group_setup = (
     (
         '',
         {
-            'layout': 'MonadTall', 
+            'layout': 'MonadTall',
             'matches': [Match(wm_class=("Alacritty", "Alacritty", "st-256color", "st-256color"))]
         }
     ),
@@ -222,11 +215,13 @@ groups = [
                  x=0.05, y=0.4, width=0.9, height=0.6, opacity=0.9,
                  on_focus_lost_hide=True) ])
 ]
+
 for idx, (label, config) in enumerate(group_setup):
     if idx + 1 == 10:
         hotkey = '0'
     else:
         hotkey = str(idx + 1)
+
     config.setdefault('layout', 'tile')
     groups.append(Group(label, **config))
 
@@ -236,54 +231,19 @@ for idx, (label, config) in enumerate(group_setup):
     # mod + shift + hotkey = move focused window to group
     keys.append(Key([mod, 'shift'], hotkey, lazy.window.togroup(label)))
 
-
-arch_color='#1793d1'
-
 layouts = [
-#    layout.MonadTall(
-#        border_on_single=True,
-#        border_focus=arch_color,
-#        border_normal=color["background"],
-#        border_width=2,
-#        margin=4
-#    ),
-#
+
     layout.Columns(
-        border_on_single=True,
-        border_focus=arch_color,
-        border_normal=color["background"],
-        border_width=2,
-        margin=4
-    ),
-#
-#    layout.Max(
-#    ),
-#
-#    layout.RatioTile(
-#        border_on_single=True,
-#        border_focus=arch_color,
-#        border_normal=color["background"],
-#        border_width=2,
-#        margin=4
-#    )
-    # Try more layouts by unleashing below layouts.
-     #layout.Stack(num_stacks=2),
-     #layout.Bsp(),
-     #layout.Matrix(),
-     #layout.MonadWide(),
-     #layout.Tile(),
-     #layout.TreeTab(),
-     #layout.VerticalTile(),
-     #layout.Zoomy(),
+        border_on_single = True,
+        border_focus = "#5E81AC",
+        border_normal = "#4C566A",
+        border_width = 2,
+        margin = 4
+    )
 ]
 
 widget_defaults = dict(
-    #font='AurulentSansMono Nerd Font',
-    #font='FiraCode Nerd Font',
-    #font='SF Pro Display:style=Bold',
-    #font='Ubuntu:style=Regular',
     font='mononoki Nerd Font',
-    #font="FiraCode Nerd Font Mono",
     fontsize=14,
     foreground='ffffff',
     padding=15,
@@ -292,11 +252,20 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 def getvolume():
-    result=subprocess.run(["pactl", "get-sink-volume", f"{sink}"], capture_output=True, text=True)
+
+    result = subprocess.run(["pactl", "get-default-sink"], capture_output=True, text=True)
+    global default_sink
+    default_sink = result.stdout.split()[0]
+
+    result = subprocess.run(["pactl", "get-default-source"], capture_output=True, text=True)
+    global default_source
+    default_source = result.stdout.split()[0]
+
+    result = subprocess.run(["pactl", "get-sink-volume", f"{default_sink}"], capture_output=True, text=True)
     pattern = re.compile("[0-9]{1,3}(?=%)")
     volume = int(pattern.search(result.stdout)[0])
 
-    result=subprocess.run(["pactl", "get-sink-mute", f"{sink}"], capture_output=True, text=True)
+    result=subprocess.run(["pactl", "get-sink-mute", f"{default_sink}"], capture_output=True, text=True)
     pattern = re.compile("(?<=Mute:\s)[a-z]{2,3}")
     mute = pattern.search(result.stdout)[0]
 
@@ -312,11 +281,10 @@ def getvolume():
     elif (volume > 80):
         icon = "墳"
         if (volume > 150):
-            result=subprocess.run(["pactl", "set-sink-volume", f"{sink}", "150%"], capture_output=True, text=True)
+            result=subprocess.run(["pactl", "set-sink-volume", f"{default_sink}", "150%"], capture_output=True, text=True)
             volume="150%"
         else:
             volume=f"{volume}%"
-    
 
     return f"{icon} {volume}"
 
@@ -358,13 +326,14 @@ screens = [
                     highlight_method='border',
                     borderwidth = 2,
                     margin = 3,
-                    highlight_color=color["background"],
-                    this_current_screen_border="FAEA48",
-                    disable_drag=True,
-                    fontsize=14,
-                    padding=4,
-                    urgent_alert_method='text',
-                    urgent_border='A91079',
+                    highlight_color = color["background"],
+                    this_current_screen_border = "E5E9F0",
+                    inactive = "4C566A",
+                    disable_drag = True,
+                    fontsize = 14,
+                    padding = 4,
+                    urgent_alert_method = 'text',
+                    urgent_text = 'BF616A',
                 ),
                 widget.Sep(
                     linewidth=2,
@@ -394,7 +363,7 @@ screens = [
                 text='',
                 fontsize=18,
                 padding=4,
-                foreground=arch_color,
+                foreground=color["arch_blue"],
                 ),
                 widget.Clock(
                     format="%d.%m.%y %a %H:%M",
@@ -411,9 +380,9 @@ screens = [
                     func = lambda: getvolume(),
                     padding=4,
                     update_interval=0.3,
-                    mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn(f'pactl set-sink-mute {sink} toggle'), 
-                                      'Button4': lambda: qtile.cmd_spawn(f'pactl set-sink-volume {sink} +3%'),
-                                      'Button5': lambda: qtile.cmd_spawn(f'pactl set-sink-volume {sink} -3%')
+                    mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn(f'pactl set-sink-mute {default_sink} toggle'), 
+                                      'Button4': lambda: qtile.cmd_spawn(f'pactl set-sink-volume {default_sink} +3%'),
+                                      'Button5': lambda: qtile.cmd_spawn(f'pactl set-sink-volume {default_sink} -3%')
                                     },
                 ),
                 # widget.PulseVolume(
@@ -426,7 +395,7 @@ screens = [
                 widget.GenPollText(
                     func=lambda: getmic(),
                     update_interval=1,
-                    mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn(f'pactl set-source-mute {source} toggle')}
+                    mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn(f'pactl set-source-mute {default_source} toggle')}
                 ),
                 widget.WidgetBox(
                     #text_closed = getwlan("close", "wlan0"),
@@ -493,9 +462,8 @@ screens = [
                     mouse_callbacks={ 'Button1': lambda: qtile.cmd_spawn(power_menu) }
                     ),
             ],
-            background=color["background"],
+            background = color["background"],
             margin = [0,0,0,0],
-            opacity = 1,
             size=24
         ),
     ),
