@@ -106,7 +106,7 @@ keys = [
 ]
 
 color = {
-    "background":   '#3B4252',
+    "background":   '#2E3440',
     "white":        '#ffffff',
     "cyan":         '#8be9fd',
     "deepskyblue":  '#00bfff',

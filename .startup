@@ -2,7 +2,7 @@
 
 /home/$USER/software/linux_scripts/set_displays.sh &
 amixer -q sset Capture nocap 100% &
-feh --bg-scale /home/$USER/Pictures/Wallpapers/1586853730_nord-peeks.png &
+feh --bg-scale /home/$USER/Pictures/Wallpapers/1586853771_daniel-leone-v7datklzzaw-unsplash-modded.jpg & 
 
 #$(sleep 4s && "$HOME/.config/polybar/launch.sh") &
 
@@ -15,10 +15,9 @@ xset s off -dpms &
 #barriers -c ~/.barrier/server.conf --disable-crypto & 
 
 mailspring &
+caffeine &
 picom --experimental-backends &
 nextcloud --background &
 udiskie &
-bluetoothctl scan on &
-blueman-applet &
 dunst &
 teams &
