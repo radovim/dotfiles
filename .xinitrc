@@ -32,6 +32,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-/home/$USER/.startup &
-delay 1
+#/home/$USER/.startup &
+#delay 1
+/home/$USER/.xsession &
 exec qtile start

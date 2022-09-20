@@ -17,7 +17,7 @@ xset s off -dpms &
 mailspring &
 caffeine &
 picom --experimental-backends &
-nextcloud --background &
+rclone mount --daemon nextcloud:/ ~/Nextcloud &
 udiskie &
 dunst &
 teams &

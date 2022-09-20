@@ -28,9 +28,6 @@ set tabstop=4
 "Use spaces characters instead if tabs
 set expandtab
 
-"Do not wrap lines. Allow long lines to expand as fas as the line goes
-set nowrap
-
 "While searching through a file incrementally highlight matching charachters as you type
 set incsearch
 
