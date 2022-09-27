@@ -73,8 +73,35 @@ if status is-interactive
     function _is_git_dirty
       echo (command git status -s --ignore-submodules=dirty 2>/dev/null)
     end
-
-    abbr -a ss sudo systemctl
-    abbr -a gs git status
-    abbr -a gaa git add .
 end
+abbr -a -U grep 'grep --color=auto'
+abbr -a -U fgrep 'fgrep --color=auto'
+abbr -a -U egrep 'egrep --color=auto'
+abbr -a -U ls 'exa --oneline --icons' #"exa" is version of "ls" rewritten in Rust
+abbr -a -U ll 'exa -al --icons'
+abbr -a -U myip 'curl ifconfig.co'
+abbr -a -U tftp 'atftp'
+abbr -a -U suspend 'sudo systemctl suspend'
+abbr -a -U homepi 'ssh -p 6435 mark@192.168.0.100 -i ~/.ssh/id_ed25519'
+abbr -a -U weather 'curl wttr.in'
+abbr -a -U rsync 'rsync -av --info=progress2 --info=name0'
+abbr -a -U fd 'fd --hidden'
+abbr -a -U rg 'rg --hidden'
+abbr -a -U mkdir 'mkdir -p'
+abbr -a -U alacrittyconf 'nvim ~/.dotfiles/.config/alacritty/alacritty.yml'
+abbr -a -U nvimconf 'nvim ~/.dotfiles/.config/nvim/init.vim'
+abbr -a -U qtileconf 'nvim ~/.dotfiles/.config/qtile/config.py'
+abbr -a -U picomconf 'nvim ~/.dotfiles/.config/picom/picom.conf'
+abbr -a -U myip 'curl ifconfig.co'
+abbr -a -U homepi 'ssh -p 6435 mark@192.168.0.100 -i ~/.ssh/id_ed25519'
+abbr -a -U telnet 'rlwrap nc'
+abbr -a -U ptc05_server 'ssh matija@192.168.35.30'
+abbr -a -U ptc05 'rlwrap nc 192.168.0.10 2001'
+abbr -a -U ptc05_build 'docker run --rm -v ~/.ssh/:/root/.ssh/ -v $PWD:/root/project dryodon/stm32:1.1.0 bash -c "cd /root/project; make clean all"'
+abbr -a -U flash_ptc05 'STM32_Programmer_CLI -c port=swd -d ~/Melexis/PTC05_PXI/Release-NoBL/PTC05_DEV_NOBL.hex -vb 3 -rst'
+abbr -a -U mlxdev 'cd ~/Melexis/PTC05_PXI & nvim'
+abbr -a -U ef 'find ./ | fzf -e -x | xargs -r -o vim'
+abbr -a -U mntnextcloud 'rclone mount --daemon nextcloud:/ ~/Nextcloud'
+abbr -a -U gd 'git diff'
+abbr -a -U gs 'git status'
+abbr -a -U gaa 'git add .'
