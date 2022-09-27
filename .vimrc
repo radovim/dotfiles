@@ -93,7 +93,7 @@ augroup END
 " PLUGINS ------------------------------------- {{{
 call plug#begin("~/.vim/plugged")
     Plug 'arcticicestudio/nord-vim'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 colorscheme nord
