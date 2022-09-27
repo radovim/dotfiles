@@ -74,4 +74,7 @@ if status is-interactive
       echo (command git status -s --ignore-submodules=dirty 2>/dev/null)
     end
 
+    abbr -a ss sudo systemctl
+    abbr -a gs git status
+    abbr -a gaa git add .
 end
