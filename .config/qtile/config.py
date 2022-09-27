@@ -102,7 +102,7 @@ keys = [
     Key([mod], "s", lazy.spawn('slock'), desc="Lock screen with slock"),
     Key([mod, "shift"], "s", lazy.spawn('flameshot gui'), desc="Take a screen shot"),
     Key([mod], "r", lazy.spawn(rofi_launcher), desc="Start rofi"),
-    Key([mod, "shift"], "m", lazy.spawn("amixer sset Capture toggle"), desc="Toggle mic"),
+    Key([mod, "shift"], "m", lazy.spawn("amixer sset Dmic0 toggle"), desc="Toggle mic"),
 ]
 
 color = {
@@ -159,7 +159,11 @@ group_setup = (
         '',
         {
             'layout': 'columns',
-            'matches': [Match(wm_class=("microsoft teams - preview", "Microsoft Teams - Preview"))] 
+            'matches': 
+            [
+                Match(wm_class=("microsoft teams - preview", "Microsoft Teams - Preview")),
+                Match(wm_class=("teams-for-linux"))
+            ] 
         }
     ),
 
@@ -309,7 +313,7 @@ def getwlan(flag, interface):
             return "  睊  ",
 
 def getmic():
-    result=subprocess.run(["pactl", "get-source-mute", f"{source}"], capture_output=True, text=True)
+    result=subprocess.run(["pactl", "get-source-mute", f"{default_source}"], capture_output=True, text=True)
 
     if "no" in result.stdout:
         return ""

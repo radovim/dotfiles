@@ -1,8 +1,8 @@
 #
 # /etc/bash.bashrc
 #
-
-export PATH="$PATH:/home/phill/.cargo/bin:/home/phill/.local/bin"
+export EDITOR="vim"
+export PATH="$PATH:/home/phill/.cargo/bin:/home/phill/.local/bin:/home/$USER/.scripts"
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/<\1>/'

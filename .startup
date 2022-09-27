@@ -15,9 +15,8 @@ xset s off -dpms &
 #barriers -c ~/.barrier/server.conf --disable-crypto & 
 
 mailspring &
-caffeine &
 picom --experimental-backends &
 rclone mount --daemon nextcloud:/ ~/Nextcloud &
 udiskie &
 dunst &
-teams &
+teams-for-linux &
