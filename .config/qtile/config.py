@@ -1,5 +1,5 @@
 # Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
+# youtCopyright (c) 2010, 2014 dequis
 # Copyright (c) 2012 Randall Ma
 # Copyright (c) 2012-2014 Tycho Andersen
 # Copyright (c) 2012 Craig Barnes
@@ -63,6 +63,7 @@ keys = [
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    Key([mod, "shift"], "space", lazy.layout.next(), desc="Move window focus to other window"),
 
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
@@ -239,6 +240,25 @@ layouts = [
 
     layout.Columns(
         border_on_single = True,
+        border_focus = "#5E81AC",
+        border_normal = "#4C566A",
+        border_width = 2,
+        margin = 4
+    ),
+
+    layout.Floating(
+        border_focus = "#5E81AC",
+        border_normal = "#4C566A",
+        border_width = 2,
+    ),
+
+    layout.Max(
+        border_focus = "#5E81AC",
+        border_normal = "#4C566A",
+        border_width = 2,
+        margin = 4
+    ),
+    layout.MonadTall(
         border_focus = "#5E81AC",
         border_normal = "#4C566A",
         border_width = 2,
@@ -484,7 +504,7 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
-follow_mouse_focus = False
+follow_mouse_focus = True 
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(

@@ -24,6 +24,17 @@ alias homepi='ssh -p 6435 mark@192.168.0.100 -i ~/.ssh/id_ed25519'
 alias telnet='rlwrap nc'
 alias ef='find ./ | fzf -e -x | xargs -r -o vim'
 alias mntnextcloud='rclone mount --daemon nextcloud:/ ~/Nextcloud'
+#=================================
+#        PACMAN
+#=================================
+alias p='sudo pacman'
+alias ps='sudo pacman -S'
+alias pqs='sudo pacamn -Qs'
+alias pss='sudo pacman -Ss'
+alias psy='sudo pacman -Sy'
+alias psyu='sudo pacman -Syu'
+alias prns='sudo pacman -Rns'
+alias pscc='sudo pacman -Scc'
 
 #==================================
 #        GIT
@@ -38,5 +49,5 @@ alias gaa='git add .'
 alias ptc05_server='ssh matija@192.168.35.30'
 alias ptc05='rlwrap nc 192.168.0.10 2001'
 alias ptc05_build='docker run --rm -v ~/.ssh/:/root/.ssh/ -v $PWD:/root/project dryodon/stm32:1.1.0 bash -c "cd /root/project; make clean all"'
-alias flash_ptc05='STM32_Programmer_CLI -c port=swd -d ~/Melexis/PTC05_PXI/Release-NoBL/PTC05_DEV_NOBL.hex -vb 3 -rst'
+alias flash_ptc05='STM32_Programmer_CLI -c port=swd -d ~/Melexis/PTC05_PXI/Release-NoBL/PTC05_DEV_NOBL.hex -rst'
 alias mlxdev='cd ~/Melexis/PTC05_PXI & nvim'

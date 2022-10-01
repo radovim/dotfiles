@@ -3,6 +3,7 @@ set nocompatible "Disable compatibility with vi
 
 "Enable line numbers
 set number
+set relativenumber
 
 "Enable file type detection
 filetype on
@@ -66,7 +67,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " }}}
 
 " KEYMAPING ----------------------------------- {{{
-inoremap jj <esc>
+"inoremap jj <esc>
 " Center the cursor vertically when mowing to the next word during a search
 nnoremap n nzz
 nnoremap N Nzz
@@ -81,6 +82,8 @@ nnoremap <c-up> <c-w>+
 nnoremap <c-down> <c-w>-
 nnoremap <c-left> <c-w>>
 nnoremap <c-right> <c-w><
+"Manage tabs
+nnoremap tn :tabnew<CR>
 " }}}
 
 " VIMSCRIPTS ---------------------------------- {{{
@@ -94,6 +97,7 @@ augroup END
 call plug#begin("~/.vim/plugged")
     Plug 'arcticicestudio/nord-vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'junegunn/fzf.vim'
 call plug#end()
 
 colorscheme nord
@@ -250,4 +254,10 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+"}}}
+
+"FZF.VIM--------------------------{{{
+nnoremap <c-p> :Files<cr>
+nnoremap <c-f> :Rg<cr>
+nnoremap <c-g> :GFiles<cr>
 "}}}

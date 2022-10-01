@@ -1,5 +1,6 @@
 export EDITOR="vim"
-export PATH="$PATH:/home/phill/.cargo/bin:/home/phill/.local/bin:/home/$USER/.scripts"
+export BROWSER="firefox"
+export PATH="$PATH:/home/phill/.cargo/bin:/home/phill/.local/bin:/home/$USER/.scripts:/home/$USER/.local.bin"
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/<\1>/'
@@ -12,4 +13,6 @@ if [ -f ~/.bash_aliases ]; then
 fi            
 
 #Start fish
+~/.scripts/fish_abbrs_auto_gen.sh
 fish
+

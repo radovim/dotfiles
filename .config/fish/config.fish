@@ -15,10 +15,10 @@ if status is-interactive
 
       if test $last_status = 0
         set initial_indicator "$blue "
-        set status_indicator "$red❯$yellow❯$blue❯"
+        set status_indicator "$yellow❯"
       else
         set initial_indicator "$red✖ $last_status"
-        set status_indicator "$red❯$red❯$red❯"
+        set status_indicator "$red❯"
       end
       set -l cwd $cyan(basename (prompt_pwd))
 
@@ -105,3 +105,17 @@ abbr -a -U mntnextcloud 'rclone mount --daemon nextcloud:/ ~/Nextcloud'
 abbr -a -U gd 'git diff'
 abbr -a -U gs 'git status'
 abbr -a -U gaa 'git add .'
+abbr -a -U sp 'sudo pacman'
+abbr -a -U p 'sudo pacman'
+abbr -a -U pi 'sudo pacman -Sy'
+abbr -a -U pu 'sudo pacman -Syu'
+abbr -a -U pr 'sudo pacman -Rns'
+abbr -a -U pc 'sudo pacman -Scc'
+abbr -a -U ps 'sudo pacman -S'
+abbr -a -U pqs 'sudo pacamn -Qs'
+abbr -a -U pss 'sudo pacman -Ss'
+abbr -a -U psy 'sudo pacman -Sy'
+abbr -a -U psyu 'sudo pacman -Syu'
+abbr -a -U prns 'sudo pacman -Rns'
+abbr -a -U pscc 'sudo pacman -Scc'
+abbr -a -U flash_ptc05 'STM32_Programmer_CLI -c port=swd -d ~/Melexis/PTC05_PXI/Release-NoBL/PTC05_DEV_NOBL.hex -rst'
