@@ -72,7 +72,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 nnoremap n nzz
 nnoremap N Nzz
 "Save current python file, clear screen, and execute python script
-nnoremap <f5> :w <CR> :!clear <CR> :!python3 % <CR>
+nnoremap <f5> :w <CR> :!clear <CR> :!mdpdf % <CR> 
 "Manage split screen
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k

@@ -24,6 +24,7 @@ alias homepi='ssh -p 6435 mark@192.168.0.100 -i ~/.ssh/id_ed25519'
 alias telnet='rlwrap nc'
 alias ef='find ./ | fzf -e -x | xargs -r -o vim'
 alias mntnextcloud='rclone mount --daemon nextcloud:/ ~/Nextcloud'
+alias notes='vim ~/Sync/Notes/'
 #=================================
 #        PACMAN
 #=================================
