@@ -243,7 +243,7 @@ layouts = [
         border_focus = "#5E81AC",
         border_normal = "#4C566A",
         border_width = 2,
-        margin = 4
+        margin = 8
     ),
 
     layout.Floating(
@@ -262,7 +262,7 @@ layouts = [
         border_focus = "#5E81AC",
         border_normal = "#4C566A",
         border_width = 2,
-        margin = 4
+        margin = 8
     )
 ]
 

@@ -19,6 +19,7 @@ SETUVAR _fish_abbr_mkdir:mkdir\x20\x2dp
 SETUVAR _fish_abbr_mlxdev:cd\x20\x7e/Melexis/PTC05_PXI\x20\x26\x20nvim
 SETUVAR _fish_abbr_mntnextcloud:rclone\x20mount\x20\x2d\x2ddaemon\x20nextcloud\x3a/\x20\x7e/Nextcloud
 SETUVAR _fish_abbr_myip:curl\x20ifconfig\x2eco
+SETUVAR _fish_abbr_notes:vim\x20\x7e/Sync/Notes/
 SETUVAR _fish_abbr_nvimconf:nvim\x20\x7e/\x2edotfiles/\x2econfig/nvim/init\x2evim
 SETUVAR _fish_abbr_p:sudo\x20pacman
 SETUVAR _fish_abbr_pc:sudo\x20pacman\x20\x2dScc

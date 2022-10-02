@@ -71,8 +71,6 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " Center the cursor vertically when mowing to the next word during a search
 nnoremap n nzz
 nnoremap N Nzz
-"Save current python file, clear screen, and execute python script
-nnoremap <f5> :w <CR> :!clear <CR> :!mdpdf % <CR> 
 "Manage split screen
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -98,6 +96,8 @@ call plug#begin("~/.vim/plugged")
     Plug 'arcticicestudio/nord-vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'junegunn/fzf.vim'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 call plug#end()
 
 colorscheme nord
