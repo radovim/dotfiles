@@ -1,5 +1,10 @@
-" STATUS LINE ----------------------------------- {{{
-set nocompatible "Disable compatibility with vi
+" SETTINGS{{{
+
+"Disable creating swap file
+set noswapfile 
+
+"Disable compatibility with vi
+set nocompatible 
 
 "Enable line numbers
 set number
@@ -13,6 +18,12 @@ filetype plugin on
 
 "Load an indent file for the detected file type
 filetype indent on
+
+"Enable smart indents
+set smartindent
+
+"Enable c indents
+set cindent
 
 "Turn syntax highlighting on
 syntax on
@@ -28,6 +39,10 @@ set tabstop=4
 
 "Use spaces characters instead if tabs
 set expandtab
+
+"Enable folding
+set foldenable
+set foldmethod=indent
 
 "While searching through a file incrementally highlight matching charachters as you type
 set incsearch
@@ -66,11 +81,16 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " }}}
 
-" KEYMAPING ----------------------------------- {{{
+" KEYMAPING{{{
 "inoremap jj <esc>
 " Center the cursor vertically when mowing to the next word during a search
 nnoremap n nzz
 nnoremap N Nzz
+nnoremap ]] ]]zz
+nnoremap [[ [[zz
+nnoremap [] []zz
+nnoremap ][ ][zz
+nnoremap <c-d> <c-d>zz
 "Manage split screen
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -81,29 +101,36 @@ nnoremap <c-down> <c-w>-
 nnoremap <c-left> <c-w>>
 nnoremap <c-right> <c-w><
 "Manage tabs
-nnoremap tn :tabnew<CR>
+nnoremap <C-n> :tabnew<CR>
+"Auto closing"
+inoremap { {<cr>}<C-o>O
 " }}}
 
-" VIMSCRIPTS ---------------------------------- {{{
+" VIMSCRIPTS{{{
 augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 " }}}
 
-" PLUGINS ------------------------------------- {{{
+" PLUGINS{{{
 call plug#begin("~/.vim/plugged")
-    Plug 'arcticicestudio/nord-vim'
+    Plug 'arcticicestudio/nord-vim',
+    Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'joshdick/onedark.vim',
     Plug 'junegunn/fzf.vim'
+    Plug 'tpope/vim-fugitive',
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 call plug#end()
 
-colorscheme nord
+colorscheme onedark
+source $HOME/.vim/themes/onedark.vim
+
 " }}}
 
-"COC.NVIM -------------------------------- {{{
+"COC.NVIM{{{
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
@@ -256,8 +283,9 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "}}}
 
-"FZF.VIM--------------------------{{{
+"FZF.VIM{{{
 nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Rg<cr>
 nnoremap <c-g> :GFiles<cr>
+nnoremap <c-a> :Ag<cr>
 "}}}

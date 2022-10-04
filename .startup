@@ -16,7 +16,6 @@ xset s off -dpms &
 
 thunderbird &
 picom --experimental-backends &
-rclone mount --daemon nextcloud:/ /mnt/Nextcloud &
 polkit-dumb-agent &
 udiskie &
 dunst &

@@ -38,7 +38,8 @@ from libqtile.command.client import InteractiveCommandClient
 
 
 mod = "mod4"
-terminal = "alacritty"
+#terminal = "alacritty"
+terminal = "st"
 dmenu = "dmenu_run -c -l 10"
 power_menu = f"/home/{getlogin()}/software/linux-scripts/dmenu_power"
 rofi_launcher = f"/home/{getlogin()}/.config/rofi/bin/launcher_misc"

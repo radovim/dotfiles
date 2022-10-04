@@ -1,6 +1,7 @@
 export EDITOR="vim"
 export BROWSER="firefox"
 export PATH="$PATH:/home/phill/.cargo/bin:/home/phill/.local/bin:/home/$USER/.scripts:/home/$USER/.local.bin"
+export fish_greeting=""
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/<\1>/'
