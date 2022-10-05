@@ -1,6 +1,5 @@
 
 set number "show line numbers
-set mouse=a "enable mouse
 set smartindent "enable smart auto indentation
 set shiftwidth=4 "width for autoindents
 set hlsearch "highlight search results
@@ -8,12 +7,13 @@ set incsearch "incremental search
 set tabstop=4 "number of columns occupied by a tab
 set softtabstop=4 "see multiple spaces as tabstop
 set expandtab "converts tabs to white space
+set foldenable
+set foldmethod=indent
 set encoding=utf-8
 "set cc=80 "set an 80 column border for good coding style
 filetype plugin indent on   "allow auto-indenting depending on file type
 filetype plugin on
 syntax on
-set clipboard=unnamedplus "using system clipboard
 set cursorline "highlight cursor line
 "set spell
 set noswapfile "disable creating swap file
@@ -26,38 +26,25 @@ command W w
 command Q q
 
 nnoremap <silent> <C-q> :q! <CR>
-nnoremap <silent> <A-Up> :wincmd k<CR>
-nnoremap <silent> <A-Down> :wincmd j<CR>
-nnoremap <silent> <A-Left> :wincmd h<CR>
-nnoremap <silent> <A-Right> :wincmd l<CR>
-
-nmap <silent> <C-Left> :tabprev <CR>
-nmap <silent> <C-Right> :tabnext <CR>
-nmap <silent> <C-n> :tabnew <CR>
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l 
+nnoremap tn :tabnew <CR>
 
 "========
 "Plugins|
 "========
 call plug#begin()
 " Appearance
- Plug 'ryanoasis/vim-devicons' "devicon support for nerdtree
- Plug 'vim-airline/vim-airline'
  Plug 'arcticicestudio/nord-vim'
  Plug 'folke/tokyonight.nvim'
  Plug 'EdenEast/nightfox.nvim'
  Plug 'joshdick/onedark.vim' 
  Plug 'dracula/vim'
- Plug 'lewis6991/gitsigns.nvim'
- Plug 'nvim-treesitter/nvim-treesitter'
  Plug 'p00f/nvim-ts-rainbow'
  Plug 'lukas-reineke/indent-blankline.nvim'
  Plug 'nvim-lua/plenary.nvim'
  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 " Utilities
- Plug 'scrooloose/nerdtree' "a file explorer for neovim
- Plug 'preservim/nerdcommenter' "an easy way for commenting out lines
- Plug 'tc50cal/vim-terminal'
- Plug 'sheerun/vim-polyglot'
  Plug 'windwp/nvim-autopairs'
  Plug 'ap/vim-css-color'
  Plug 'romgrk/barbar.nvim'
@@ -65,26 +52,15 @@ call plug#begin()
  Plug 'BurntSushi/ripgrep'
 " Completion / linters / formatters
  Plug 'neoclide/coc.nvim', {'branch': 'release'} "a fast code completion engine
- Plug 'plasticboy/vim-markdown'
 " Git
  Plug 'airblade/vim-gitgutter'
- Plug 'kyazdani42/nvim-web-devicons' " for file icons
- Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
-colorscheme nord
+source $HOME/.config/nvim/themes/onedark.vim
+colorscheme onedark
 
-"=================
-"    NerdTree    |
-"=================
-let NERDTreeShowHidden=1
-" Start NERDTree and put the cursor back in the other window.
-"autocmd VimEnter * NERDTree | wincmd p
-nnoremap <C-t> :NERDTreeToggle<CR>
+" coc.nvim{{{
 
-"=================
-"    coc.nvim    |
-"=================
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
@@ -233,7 +209,7 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
+" }}}
 "=======================
 "    Nvim-autopairs    |
 "=======================
@@ -299,9 +275,7 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-"=========================
-"    Indent-blankline    |
-"=========================
+" Indent-blankline {{{
 lua <<EOF
 vim.opt.list = true
 
@@ -314,3 +288,4 @@ EOF
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" }}}

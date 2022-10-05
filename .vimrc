@@ -29,7 +29,7 @@ set cindent
 syntax on
 
 "Highlight cursor line underneath the cursor vertically
-"set cursorline
+set cursorline
 
 "Set shift width to 4 spaces
 set shiftwidth=4
@@ -41,8 +41,9 @@ set tabstop=4
 set expandtab
 
 "Enable folding
-set foldenable
+"set foldenable
 set foldmethod=indent
+set foldnestmax=1
 
 "While searching through a file incrementally highlight matching charachters as you type
 set incsearch
@@ -90,7 +91,7 @@ nnoremap ]] ]]zz
 nnoremap [[ [[zz
 nnoremap [] []zz
 nnoremap ][ ][zz
-nnoremap <c-d> <c-d>zz
+"nnoremap <c-d> <c-d>zz
 "Manage split screen
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -102,8 +103,6 @@ nnoremap <c-left> <c-w>>
 nnoremap <c-right> <c-w><
 "Manage tabs
 nnoremap <C-n> :tabnew<CR>
-"Auto closing"
-inoremap { {<cr>}<C-o>O
 " }}}
 
 " VIMSCRIPTS{{{
@@ -284,8 +283,8 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "}}}
 
 "FZF.VIM{{{
-nnoremap <c-p> :Files<cr>
-nnoremap <c-f> :Rg<cr>
-nnoremap <c-g> :GFiles<cr>
-nnoremap <c-a> :Ag<cr>
+nnoremap \p :Files<cr>
+nnoremap \f :Rg<cr>
+nnoremap \g :GFiles<cr>
+nnoremap \a :Ag<cr>
 "}}}
