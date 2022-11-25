@@ -1,0 +1,15 @@
+require('base-settings')
+require('keymaps')
+require('plugins')
+require('coc-nvim')
+require('telescp')
+--require('dashboard-conf')
+--require('autopairs')
+require('indent-blankline')
+require('treesitter')
+require('lualine-conf')
+
+require('onedark').setup {
+    style = 'darker'
+}
+require('onedark').load()

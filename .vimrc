@@ -42,7 +42,6 @@ set expandtab
 
 "Enable folding
 "set foldenable
-set foldmethod=indent
 set foldnestmax=1
 
 "While searching through a file incrementally highlight matching charachters as you type
@@ -121,12 +120,11 @@ call plug#begin("~/.vim/plugged")
     Plug 'junegunn/fzf.vim'
     Plug 'tpope/vim-fugitive',
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
 call plug#end()
 
-colorscheme onedark
-source $HOME/.vim/themes/onedark.vim
-
+"sonedarkource $HOME/.vim/themes/onedark.vim
+syntax enable
+colorscheme monokai 
 " }}}
 
 "COC.NVIM{{{

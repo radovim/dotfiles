@@ -1,10 +1,8 @@
 #!/bin/bash
 
-/home/$USER/software/linux_scripts/set_displays.sh &
+$HOME/.scripts/set_displays.sh &
 amixer -q sset Capture nocap 100% &
-feh --bg-scale /home/$USER/Pictures/Wallpapers/1586853771_daniel-leone-v7datklzzaw-unsplash-modded.jpg & 
-
-#$(sleep 4s && "$HOME/.config/polybar/launch.sh") &
+feh --bg-scale $HOME/Pictures/Wallpapers/0005.jpg &
 
 #Set screen lock timeout
 xautolock -time 5 -locker slock &
@@ -12,11 +10,15 @@ xautolock -time 5 -locker slock &
 #Turn off screen saver and disable DPMS
 xset s off -dpms &
 
-#barriers -c ~/.barrier/server.conf --disable-crypto & 
+#barriers -c ~/.barrier/server.conf --disable-crypto &
 
-thunderbird &
+$HOME/.scripts/battery_warning.sh &
+dwmblocks &
+#thunderbird &
+mailspring &
 picom --experimental-backends &
 polkit-dumb-agent &
 udiskie &
 dunst &
-teams-for-linux &
+#teams-for-linux &
+teams &

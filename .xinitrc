@@ -32,6 +32,10 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-/home/$USER/.startup &
+$HOME/.startup &
 #delay 1
-exec qtile start
+exec dwm
+#exec startxfce4
+#export XDG_SESSION_TYPE=x11
+#export GDK_BACKEND=x11
+#exec gnome-session

@@ -1,6 +1,7 @@
 #================================
 #          MY ALIASES
 #================================
+alias v='nvim'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -20,11 +21,15 @@ alias nvimcfg='nvim ~/.dotfiles/.config/nvim/init.vim'
 alias qtilecfg='nvim ~/.dotfiles/.config/qtile/config.py'
 alias picomcfg='nvim ~/.dotfiles/.config/picom/picom.conf'
 alias myip='curl ifconfig.co'
-alias homepi='ssh -p 6435 mark@192.168.0.100 -i ~/.ssh/id_ed25519'
 alias telnet='rlwrap nc'
-alias ef='find ./ | fzf -e -x | xargs -r -o vim'
-alias mntnextcloud='rclone mount --daemon nextcloud:/ ~/Nextcloud'
+alias office365-totp='ph show Novelic/Office365 | grep --color=auto -Po "(?<=OTP\sCode:\s).+" | xclip -i | xclip -o'
+alias ef='find ./ | fzf -e -x | xargs -r -o nvim'
+alias mntnextcloud='rclone mount --daemon nextcloud:/ /mnt/Nextcloud'
+alias mnthomepi='sshfs homepi:/home/mark /mnt/homepi'
+alias mntwindows='sshfs windows:/C: /mnt/windows'
 alias notes='vim ~/Sync/Notes/'
+alias vpn-up='wg-quick up homepi-wg'
+alias vpn-down='wg-quick down homepi-wg'
 #=================================
 #        PACMAN
 #=================================
@@ -49,6 +54,6 @@ alias gaa='git add .'
 alias ptc05_server='ssh matija@192.168.35.30'
 alias ptc05='rlwrap nc 192.168.0.10 2001'
 alias ptc05_build='docker run --rm -v ~/.ssh/:/root/.ssh/ -v $PWD:/root/project dryodon/stm32:1.1.0 bash -c "cd /root/project; make clean all"'
-alias flash_ptc05='STM32_Programmer_CLI -c port=swd freq=1 -d ~/Melexis/PTC05_PXI/Release-NoBL/PTC05_DEV_NOBL.hex -rst'
+alias flash_ptc05='STM32_Programmer_CLI -c port=swd freq=8000 -d ~/Melexis/PTC05_PXI/Release-NoBL/PTC05_DEV_NOBL.hex -rst'
 alias flash_ptc05_btl='STM32_Programmer_CLI -c port=swd freq=1 -d ~/Melexis/PTC05_Bootloader-0.6.0.hex -rst'
-alias mlxdev='cd ~/Melexis/PTC05_PXI & nvim'
+alias mlxdev='cd ~/Melexis/PTC05_PXI & vim'
