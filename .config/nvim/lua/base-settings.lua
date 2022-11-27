@@ -19,3 +19,5 @@ vim.opt.encoding = "utf-8"
 vim.opt.cursorline = true --highlight cursor line
 vim.opt.spell = false
 vim.opt.swapfile = false --disable creating swap file
+vim.cmd('autocmd BufNewFile,BufRead *.robot setlocal filetype=robot')
+vim.cmd('nmap <silent> <C-l> <Plug>(coc-coc-robotframework-keymap)')

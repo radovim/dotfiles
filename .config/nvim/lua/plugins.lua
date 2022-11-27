@@ -10,7 +10,9 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug ('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
     Plug 'nvim-lualine/lualine.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'nvim-tree/nvim-web-devicons'
 --Utilities
+    Plug 'nvim-tree/nvim-tree.lua'
     Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
     Plug 'iamcco/markdown-preview.nvim' 
     Plug ('iamcco/markdown-preview.nvim', { ['do'] = vim.fn['mkdp#util#install()'], ['for'] = {'markdown', 'vim-plug'}})
@@ -21,6 +23,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     --Plug 'glepnir/dashboard-nvim'
 --Completion / linters / formatters
     Plug ('neoclide/coc.nvim', {branch = 'release'}) --a fast code completion engine
+    Plug ('dimasaryo/coc-robotframework', {['do'] = 'yarn install --frozen-lockfile && yarn build'})
 --Git
     --Plug 'airblade/vim-gitgutter'
     Plug 'tpope/vim-fugitive'
