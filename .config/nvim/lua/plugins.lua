@@ -3,7 +3,6 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/plugged')
 --Appearance
     Plug 'navarasu/onedark.nvim'
-    Plug 'EdenEast/nightfox.nvim'
     Plug 'dracula/vim'
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'nvim-lua/plenary.nvim'
@@ -20,12 +19,10 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug 'ap/vim-css-color'
     Plug 'sharkdp/fd'
     Plug 'BurntSushi/ripgrep'
-    --Plug 'glepnir/dashboard-nvim'
 --Completion / linters / formatters
     Plug ('neoclide/coc.nvim', {branch = 'release'}) --a fast code completion engine
     Plug ('dimasaryo/coc-robotframework', {['do'] = 'yarn install --frozen-lockfile && yarn build'})
 --Git
-    --Plug 'airblade/vim-gitgutter'
-    Plug 'tpope/vim-fugitive'
+    Plug ('lewis6991/gitsigns.nvim')
 vim.call('plug#end')
 

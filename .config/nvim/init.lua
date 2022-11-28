@@ -9,6 +9,7 @@ require('indent-blankline')
 require('treesitter')
 require('lualine-conf')
 require('nvim-tree-conf')
+require('gitsigns-conf')
 
 require('onedark').setup {
     style = 'darker'
