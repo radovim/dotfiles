@@ -30,6 +30,7 @@ alias mntwindows='sshfs windows:/C: /mnt/windows'
 alias notes='vim ~/Sync/Notes/'
 alias vpn-up='wg-quick up homepi-wg'
 alias vpn-down='wg-quick down homepi-wg'
+alias jd='cd $(find . -type d -print | fzf)'
 #=================================
 #        PACMAN
 #=================================
