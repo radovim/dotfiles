@@ -7,7 +7,7 @@ SETUVAR _fish_abbr_egrep:egrep\x20\x2d\x2dcolor\x3dauto
 SETUVAR _fish_abbr_fd:fd\x20\x2d\x2dhidden
 SETUVAR _fish_abbr_fgrep:fgrep\x20\x2d\x2dcolor\x3dauto
 SETUVAR _fish_abbr_flash__ptc05:STM32_Programmer_CLI\x20\x2dc\x20port\x3dswd\x20freq\x3d8000\x20\x2dd\x20\x7e/Melexis/PTC05_PXI/Release\x2dNoBL/PTC05_DEV_NOBL\x2ehex\x20\x2drst
-SETUVAR _fish_abbr_flash__ptc05__btl:STM32_Programmer_CLI\x20\x2dc\x20port\x3dswd\x20freq\x3d1\x20\x2dd\x20\x7e/Melexis/PTC05_Bootloader\x2d0\x2e6\x2e0\x2ehex\x20\x2drst
+SETUVAR _fish_abbr_flash__ptc05__btl:STM32_Programmer_CLI\x20\x2dc\x20port\x3dswd\x20freq\x3d8000\x20\x2dd\x20\x7e/Melexis/PTC05_Bootloader\x2d0\x2e6\x2e0\x2ehex\x20\x2drst
 SETUVAR _fish_abbr_gaa:git\x20add\x20\x2e
 SETUVAR _fish_abbr_gd:git\x20diff
 SETUVAR _fish_abbr_grep:grep\x20\x2d\x2dcolor\x3dauto

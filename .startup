@@ -2,10 +2,11 @@
 
 $HOME/.scripts/set_displays.sh &
 amixer -q sset Capture nocap 100% &
-feh --bg-scale $HOME/Pictures/Wallpapers/0005.jpg &
+feh --bg-scale $HOME/Pictures/Wallpapers/2080886.jpg
+#feh --bg-scale $HOME/Pictures/Wallpapers/0005.jpg &
 
 #Set screen lock timeout
-xautolock -time 5 -locker slock &
+# xautolock -time 5 -locker slock &
 
 #Turn off screen saver and disable DPMS
 xset s off -dpms &
@@ -20,5 +21,11 @@ picom --experimental-backends &
 polkit-dumb-agent &
 udiskie &
 dunst &
+xbindkeys &
+solaar -w hide &
+wmname "LG3D" &
+nm-applet &
+blueman-applet &
+syncthing --no-browser
 #teams-for-linux &
 teams &
