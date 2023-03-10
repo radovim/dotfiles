@@ -2,7 +2,8 @@
 
 $HOME/.scripts/set_displays.sh &
 amixer -q sset Capture nocap 100% &
-feh --bg-scale $HOME/Pictures/Wallpapers/2080886.jpg
+feh --bg-scale $HOME/Pictures/Wallpapers/0293.jpg
+#feh --bg-scale $HOME/Pictures/Wallpapers/2080886.jpg
 #feh --bg-scale $HOME/Pictures/Wallpapers/0005.jpg &
 
 #Set screen lock timeout
