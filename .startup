@@ -15,6 +15,7 @@ xset s off -dpms &
 #barriers -c ~/.barrier/server.conf --disable-crypto &
 
 $HOME/.scripts/battery_warning.sh &
+amixer -c 0 sset Headphone unmute &
 dwmblocks &
 #thunderbird &
 mailspring &

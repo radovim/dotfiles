@@ -8,6 +8,6 @@ PS1='\[\033[00;32m\]\u@\h\[\033[00m\]:\[\033[00;34m\]\w\[\033[00m\]\[\033[00;31m
 [ -f ~/.bash_variables ] && . ~/.bash_variables
 
 #Start fish
-~/.scripts/fish_abbrs_auto_gen.sh
-fish
+#~/.scripts/fish_abbrs_auto_gen.sh
+#fish
 
