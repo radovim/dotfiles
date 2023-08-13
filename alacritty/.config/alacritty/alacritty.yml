@@ -12,6 +12,18 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
+
+import:
+  # uncomment the flavour you want below:
+#  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+#  - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
+#  - ~/.config/alacritty/catppuccin/catppuccin-frappe.yml
+#  - ~/.config/alacritty/catppuccin/catppuccin-latte.yml
+#  - ~/.config/alacritty/atom.yml
+  - ~/.config/alacritty/dracula.yml
+#  - ~/.config/alacritty/one-dark.yml
+#  - ~/.config/alacritty/nord.yml
+
 env:
   # TERM variable
   #
@@ -19,7 +31,7 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: alacritty
+  TERM: xterm-256color
   WINIT_X11_SCALE_FACTOR: "1"
 
 window:
@@ -63,7 +75,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 1
+  opacity: 1 
   # Startup Mode (changes require restart)
   #
   # Values for `startup_mode`:
@@ -110,7 +122,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: JetBrainsMono Nerd Font Mono
+    family: JetBrainsMono NF
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -121,7 +133,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrainsMono Nerd Font Mono
+    family: JetBrainsMono NF
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -132,7 +144,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrainsMono Nerd Font Mono
+    family: JetBrainsMono NF
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -299,30 +311,30 @@ font:
   #
   #indexed_colors: []
 
-colors:
-    primary:
-      background: '#161719'
-      foreground: '#abb2bf'
-
-    normal:
-      black: '#000000'
-      red: '#fd5ff1'
-      green: '#87c38a'
-      yellow: '#ffd7b1'
-      blue: '#85befd'
-      magenta: '#b9b6fc'
-      cyan: '#85befd'
-      white: '#e0e0e0'
-
-    bright:
-      black: '#000000'
-      red: '#fd5ff1'
-      green: '#94fa36'
-      yellow: '#f5ffa8'
-      blue: '#96cbfe'
-      magenta: '#b9b6fc'
-      cyan: '#85befd'
-      white: '#e0e0e0'
+    #colors:
+    #    primary:
+    #      background: '#161719'
+    #      foreground: '#abb2bf'
+    #
+    #    normal:
+    #      black: '#000000'
+    #      red: '#fd5ff1'
+    #      green: '#87c38a'
+    #      yellow: '#ffd7b1'
+    #      blue: '#85befd'
+    #      magenta: '#b9b6fc'
+    #      cyan: '#85befd'
+    #      white: '#e0e0e0'
+    #
+    #    bright:
+    #      black: '#000000'
+    #      red: '#fd5ff1'
+    #      green: '#94fa36'
+    #      yellow: '#f5ffa8'
+    #      blue: '#96cbfe'
+    #      magenta: '#b9b6fc'
+    #      cyan: '#85befd'
+    #      white: '#e0e0e0'
 
 theme: Atom
 
@@ -419,7 +431,7 @@ theme: Atom
 #shape: Beam
 cursor:
   style:
-    shape: Block
+    shape: Underline
   # Cursor blinking state
   #
   # Values for `blinking`:

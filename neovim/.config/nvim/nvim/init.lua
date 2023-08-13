@@ -12,6 +12,7 @@ require('nvim-tree-conf')
 require('gitsigns-conf')
 
 --require('onedark').setup {
---    style = 'darker'
+ --   style = 'darker'
 --}
 --require('onedark').load()
+require('dracula').load()
