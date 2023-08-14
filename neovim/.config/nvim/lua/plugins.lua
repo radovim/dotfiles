@@ -1,29 +1,26 @@
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', '~/.config/nvim/plugged')
---Appearance
+-- Themes
     Plug 'navarasu/onedark.nvim'
-    Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'LunarVim/darkplus.nvim'
-    Plug 'nvim-lua/plenary.nvim'
+-- Appearance
+    Plug 'lukas-reineke/indent-blankline.nvim' -- This plugin adds indentation guides to all lines (including empty lines)
+    Plug 'nvim-lualine/lualine.nvim' -- A blazing fast and easy to configure Neovim statusline written in Lua
+    Plug 'nvim-tree/nvim-web-devicons' -- Web devicons for nvim-tree plugin
+-- Utilities
     Plug ('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
-    Plug 'nvim-lualine/lualine.nvim'
-    Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'nvim-tree/nvim-web-devicons'
---Utilities
-    Plug 'christoomey/vim-tmux-navigator'
-    Plug 'nvim-tree/nvim-tree.lua'
-    Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
+    Plug 'nvim-lua/plenary.nvim' -- Required dependencie for Telescope
+    Plug 'christoomey/vim-tmux-navigator' -- Navigate seamlessly between tmux and nvim splits with Ctlr-h/j/k/l
+    Plug 'nvim-tree/nvim-tree.lua' -- A file explorer for nvim
+    Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'}) -- Tree-sitter is a parser generator tool and an incremental parsing library
     Plug 'iamcco/markdown-preview.nvim' 
     Plug ('iamcco/markdown-preview.nvim', { ['do'] = vim.fn['mkdp#util#install()'], ['for'] = {'markdown', 'vim-plug'}})
-    Plug ('tpope/vim-commentary')
-    Plug 'ap/vim-css-color'
-    Plug 'sharkdp/fd'
-    Plug 'BurntSushi/ripgrep'
---Completion / linters / formatters
+    Plug ('tpope/vim-commentary') -- Comment stuff out. Use "gcc" to comment out a line (takes a count), "gc" to comment out the target of a motion
+    Plug 'ap/vim-css-color' -- Preview colours in source code while editing
+-- Completion / linters / formatters
     Plug ('neoclide/coc.nvim', {branch = 'release'}) --a fast code completion engine
     Plug ('dimasaryo/coc-robotframework', {['do'] = 'yarn install --frozen-lockfile && yarn build'})
---Git
-    Plug ('lewis6991/gitsigns.nvim')
+-- Git
 vim.call('plug#end')
 
