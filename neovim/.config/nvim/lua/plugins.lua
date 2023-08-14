@@ -19,8 +19,9 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug ('tpope/vim-commentary') -- Comment stuff out. Use "gcc" to comment out a line (takes a count), "gc" to comment out the target of a motion
     Plug 'ap/vim-css-color' -- Preview colours in source code while editing
 -- Completion / linters / formatters
-    Plug ('neoclide/coc.nvim', {branch = 'release'}) --a fast code completion engine
+    Plug ('neoclide/coc.nvim', {branch = 'release'}) -- A fast code completion engine
     Plug ('dimasaryo/coc-robotframework', {['do'] = 'yarn install --frozen-lockfile && yarn build'})
+    Plug ('fannheyward/coc-pyright') -- Coc extension for python
+    Plug ('josa42/coc-lua') -- Coc extension for lua
 -- Git
 vim.call('plug#end')
-
