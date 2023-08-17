@@ -28,4 +28,4 @@ vim.cmd('autocmd BufNewFile,BufRead *.robot setlocal filetype=robot')
 vim.cmd('nmap <silent> <C-l> <Plug>(coc-coc-robotframework-keymap)')
 
 --set the color scheme
-vim.cmd[[colorscheme darkplus]]
+--vim.cmd[[colorscheme darkplus]]
