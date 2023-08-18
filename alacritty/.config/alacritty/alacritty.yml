@@ -32,7 +32,7 @@ env:
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
   TERM: xterm-256color
-  WINIT_X11_SCALE_FACTOR: "1"
+    #WINIT_X11_SCALE_FACTOR: "1" # Uncomment this line if you are using tiling window manager
 
 window:
   # Window dimensions (changes require restart)
@@ -471,8 +471,8 @@ live_config_reload: true
 # Default:
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
+shell:
+  program: /bin/tmux
 #  args:
 #    - --login
 # Startup directory
