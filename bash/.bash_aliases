@@ -43,6 +43,15 @@ alias prns='sudo pacman -Rns'
 alias pscc='sudo pacman -Scc'
 
 #==================================
+#        APT
+#==================================
+distro=lsb_release -i | awk '{print tolower($3)}'
+if [ distro 
+alias install='sudo apt install -y'
+alias update='sudo apt update -y'
+alias upgrade='sudo apt update -y && sudo apt upgrade -y'
+
+#==================================
 #        GIT
 #==================================
 alias gd='git diff'
