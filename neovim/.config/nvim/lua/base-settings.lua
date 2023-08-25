@@ -29,3 +29,6 @@ vim.cmd('nmap <silent> <C-l> <Plug>(coc-coc-robotframework-keymap)')
 
 --set the color scheme
 --vim.cmd[[colorscheme darkplus]]
+
+-- Force nvim to use the same background color as terminal does
+vim.cmd('au ColorScheme * hi Normal ctermbg=none guibg=none')

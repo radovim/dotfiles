@@ -5,6 +5,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug 'navarasu/onedark.nvim'
     Plug 'LunarVim/darkplus.nvim'
 -- Appearance
+    Plug 'xiyaowong/transparent.nvim'
     Plug 'lukas-reineke/indent-blankline.nvim' -- This plugin adds indentation guides to all lines (including empty lines)
     Plug 'nvim-lualine/lualine.nvim' -- A blazing fast and easy to configure Neovim statusline written in Lua
     Plug 'nvim-tree/nvim-web-devicons' -- Web devicons for nvim-tree plugin

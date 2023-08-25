@@ -34,6 +34,7 @@ fi
 
 $HOME/.startup &
 delay 1
+#exec qtile start
 exec dwm
 #export XDG_SESSION_TYPE=x11
 #export GDK_BACKEND=x11

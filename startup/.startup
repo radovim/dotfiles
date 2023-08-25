@@ -29,5 +29,3 @@ wmname "LG3D" &
 nm-applet &
 blueman-applet &
 syncthing --no-browser
-#teams-for-linux &
-teams &
