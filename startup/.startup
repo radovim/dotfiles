@@ -1,8 +1,8 @@
 #!/bin/bash
 
-$HOME/.scripts/set_displays.sh &
+autorandr --change &
 amixer -q sset Capture nocap 100% &
-feh --bg-scale $HOME/Pictures/Wallpapers/0293.jpg
+feh --bg-scale $HOME/Sync/photos/wallpapers/sky.jpg
 #feh --bg-scale $HOME/Pictures/Wallpapers/2080886.jpg
 #feh --bg-scale $HOME/Pictures/Wallpapers/0005.jpg &
 
@@ -18,7 +18,7 @@ $HOME/.scripts/battery_warning.sh &
 amixer -c 0 sset Headphone unmute &
 dwmblocks &
 #thunderbird &
-mailspring &
+#mailspring &
 picom --experimental-backends &
 polkit-dumb-agent &
 udiskie &
@@ -26,6 +26,7 @@ dunst &
 xbindkeys &
 solaar -w hide &
 wmname "LG3D" &
-nm-applet &
+#nm-applet &
 blueman-applet &
 syncthing --no-browser
+blueman-applet &
