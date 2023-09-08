@@ -8,6 +8,9 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/ary/.zshrc'
 
+# Automatically update PATH entries
+zstyle ':completion:*' rehash true
+
 #PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
 eval "$(starship init zsh)"
 

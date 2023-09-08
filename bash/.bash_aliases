@@ -31,23 +31,30 @@ alias notes='vim ~/Sync/Notes/'
 alias vpn-up='wg-quick up homepi-wg'
 alias vpn-down='wg-quick down homepi-wg'
 alias jd='cd $(find . -type d -print | fzf)'
-#=================================
-#        PACMAN
-#=================================
-alias p='sudo pacman'
-alias pqs='sudo pacamn -Qs'
-alias pss='sudo pacman -Ss'
-alias psy='sudo pacman -Sy'
-alias psyu='sudo pacman -Syu'
-alias prns='sudo pacman -Rns'
-alias pscc='sudo pacman -Scc'
+alias feh='feh -. --edit'
+#==================================
+#       PACKAGE MANAGERS
+#==================================
+DISTRO=$(cat /etc/os-release  | grep -Po "(?<=^ID=)\w+")
 
-#==================================
-#        APT
-#==================================
-alias install='sudo apt install -y'
-alias update='sudo apt update -y'
-alias upgrade='sudo apt update -y && sudo apt upgrade -y'
+if [ "$distro" = "ubuntu" ] || [ "$DISTRO" = "debian" ]; then
+    alias install='sudo apt install -y'
+    alias remove='sudo apt autoremove'
+    alias update='sudo apt update -y'
+    alias upgrade='sudo apt update -y && sudo apt upgrade -y'
+elif [ "$DISTRO" = "arch" ]; then
+    alias install='sudo pacman -S'
+    alias update='sudo pacman -Sy'
+    alias upgrade='sudo pacman -Syu'
+    alias remove='sudo pacman -Rns'
+    alias p='sudo pacman'
+    alias pqs='sudo pacamn -Qs'
+    alias pss='sudo pacman -Ss'
+    alias psy='sudo pacman -Sy'
+    alias psyu='sudo pacman -Syu'
+    alias prns='sudo pacman -Rns'
+    alias pscc='sudo pacman -Scc'
+fi
 
 #==================================
 #        GIT
