@@ -1,3 +1,15 @@
+# Increase volume
+#"amixer sset -q Mater 5%+"
+#   XF86AudioRaiseVolume
+
+# Decrease volume
+# "amixer sset -q Mater 5%-"
+#    XF86AudioLowerVolume
+
+# Mute volume
+# "amixer sset Mater toggle"
+#    XF86AudioMute
+
 # thumb wheel up => next page
 "xdotool key Alt_L+Right"
    b:9                                   

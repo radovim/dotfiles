@@ -1,33 +1,34 @@
 #!/bin/bash
 
-$HOME/.scripts/set_displays.sh &
+# Mute microphone at startup(privacy measure)
 amixer -q sset Capture nocap 100% &
-feh --bg-scale $HOME/Pictures/Wallpapers/0293.jpg
-#feh --bg-scale $HOME/Pictures/Wallpapers/2080886.jpg
-#feh --bg-scale $HOME/Pictures/Wallpapers/0005.jpg &
 
 #Set screen lock timeout
 # xautolock -time 5 -locker slock &
 
 #Turn off screen saver and disable DPMS
-xset s off -dpms &
+#xset s off -dpms &
 
-#barriers -c ~/.barrier/server.conf --disable-crypto &
-
+# This script sends notification when battery reaches predefined threshold(e.g. 10%)
 $HOME/.scripts/battery_warning.sh &
-amixer -c 0 sset Headphone unmute &
+
+# Reserved for huawei matebook 14s and its sloppy audio driver
+#amixer -q sset Speaker unmute &
+#amixer -q sset Headphone unmute &
+
+# Start some useful programs
 dwmblocks &
-#thunderbird &
-mailspring &
-picom --experimental-backends &
+picom --log-file=~/.picom.log&
 polkit-dumb-agent &
-udiskie &
+udiskie -ans &
 dunst &
 xbindkeys &
 solaar -w hide &
 wmname "LG3D" &
-nm-applet &
+#nm-applet &
 blueman-applet &
-syncthing --no-browser
-#teams-for-linux &
-teams &
+blueman-applet &
+
+# Automatically arrange screens and set backgroud
+sleep 1
+#ascarrange &
