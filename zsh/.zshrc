@@ -1,11 +1,5 @@
 # Lines configured by zsh-newuser-install
 
-# Start tmux
-if [ -z "$TMUX" ]
-then
-    tmux attach -t TMUX || tmux new -s TMUX
-fi
-
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=100000
