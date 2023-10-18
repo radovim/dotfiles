@@ -20,7 +20,8 @@ vim.opt.foldenable = true
 vim.opt.encoding = "utf-8"
 -- set.cc = 80 --set an 80 column border for good coding style
 vim.opt.cursorline = true --highlight cursor line
-vim.opt.spell = false
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
 vim.opt.swapfile = false --disable creating swap file
 
 -- robot framework
