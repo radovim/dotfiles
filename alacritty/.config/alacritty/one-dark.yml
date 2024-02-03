@@ -1,7 +1,8 @@
 colors:
     # Default colors
     primary:
-      background: '#111111'
+      #background: '#111111' # My
+      background: '#1f2329' # OneDark Darker
       foreground: '#abb2bf'
 
     # Normal colors

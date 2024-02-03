@@ -20,19 +20,20 @@ import:
 #  - ~/.config/alacritty/catppuccin/catppuccin-frappe.yml
 #  - ~/.config/alacritty/catppuccin/catppuccin-latte.yml
 #  - ~/.config/alacritty/atom.yml
-  - ~/.config/alacritty/dracula.yml
-#  - ~/.config/alacritty/one-dark.yml
+#  - ~/.config/alacritty/dracula.yml
+  - ~/.config/alacritty/one-dark.yml
 #  - ~/.config/alacritty/nord.yml
 
-env:
+#env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color
+  #TERM: alacritty
   #WINIT_X11_SCALE_FACTOR: "1" # Uncomment this line if you are using tiling window manager
+  #WINIT_UNIX_BACKEND: wayland
 
 window:
   # Window dimensions (changes require restart)
@@ -41,26 +42,26 @@ window:
   # must be non-zero for this to take effect. The number of columns must be at
   # least `2`, while using a value of `0` for columns and lines will fall back
   # to the window manager's recommended size
-  #dimensions:
-  #columns: 0
-  #lines: 0
+  dimensions:
+    columns: 120
+    lines: 30
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
-  position:
-    x: 0
-    y: 0
+  #position:
+  #  x: 0
+  #  y: 0
 
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  #padding:
-  #  x: 0
-  #  y: 0
+  padding:
+    x: 3
+    y: 0
   # Spread additional padding evenly around the terminal content.
-  #dynamic_padding: false
+  dynamic_padding: true
   # Window decorations
   #
   # Values for `decorations`:
@@ -70,12 +71,12 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  #decorations: full
+  decorations: full
   # Background opacity
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.95
+  opacity: 0.9
   # Startup Mode (changes require restart)
   #
   # Values for `startup_mode`:
@@ -85,12 +86,12 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Maximized
+  #startup_mode: Windowed
 
   # Window title
-  title: Alacritty
+  #title: Alacritty
   # Allow terminal applications to change Alacritty's window title.
-  #dynamic_title: true
+  dynamic_title: true
   # Window class (Linux/BSD only):
   #class:
   # Application instance name
@@ -431,7 +432,7 @@ theme: Atom
 #shape: Beam
 cursor:
   style:
-    shape: Underline
+    shape: Beam
   # Cursor blinking state
   #
   # Values for `blinking`:
@@ -472,6 +473,7 @@ live_config_reload: true
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
 shell:
+  #program: /bin/zsh
   program: /bin/zsh
 #  args:
 #    - --login

@@ -9,8 +9,9 @@
 
 colors:
   primary:
-    background: '#000000'
-    #background: '#282a36'
+    background: '#000000' # black
+    #background: '#282a36' # Dracula default
+    #background: '#1f2329' # OneDark Darker
     foreground: '#f8f8f2'
     bright_foreground: '#ffffff'
   cursor:
