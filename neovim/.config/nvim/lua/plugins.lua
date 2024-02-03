@@ -15,6 +15,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug 'christoomey/vim-tmux-navigator' -- Navigate seamlessly between tmux and nvim splits with Ctlr-h/j/k/l
     Plug 'nvim-tree/nvim-tree.lua' -- A file explorer for nvim
     Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'}) -- Tree-sitter is a parser generator tool and an incremental parsing library
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
     Plug 'iamcco/markdown-preview.nvim' 
     Plug ('iamcco/markdown-preview.nvim', { ['do'] = vim.fn['mkdp#util#install()'], ['for'] = {'markdown', 'vim-plug'}})
     Plug ('tpope/vim-commentary') -- Comment stuff out. Use "gcc" to comment out a line (takes a count), "gc" to comment out the target of a motion

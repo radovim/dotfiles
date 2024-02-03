@@ -5,7 +5,7 @@ vim.o.syntax = "on"
 vim.o.filetype = "plugin"
 vim.o.filetype = "ident"
 vim.o.filetype = "on"
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.opt.cursorline = true
 vim.opt.smartindent = true -- enable smart auto indentation
 vim.opt.shiftwidth = 4 -- width for autoindents
@@ -20,7 +20,8 @@ vim.opt.foldenable = true
 vim.opt.encoding = "utf-8"
 -- set.cc = 80 --set an 80 column border for good coding style
 vim.opt.cursorline = true --highlight cursor line
-vim.opt.spell = false
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
 vim.opt.swapfile = false --disable creating swap file
 
 -- robot framework
