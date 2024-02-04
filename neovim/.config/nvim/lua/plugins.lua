@@ -4,6 +4,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 -- Themes
     Plug 'navarasu/onedark.nvim'
     Plug 'LunarVim/darkplus.nvim'
+    Plug ('catppuccin/nvim', { as = 'catppuccin' })
 -- Appearance
     Plug 'xiyaowong/transparent.nvim'
     Plug 'lukas-reineke/indent-blankline.nvim' -- This plugin adds indentation guides to all lines (including empty lines)

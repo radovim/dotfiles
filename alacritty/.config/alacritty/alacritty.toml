@@ -1,6 +1,13 @@
-import = ["/home/ary/.config/alacritty/one-dark.toml"]
+import = [
+  # uncomment the flavour you want below:
+  #"~/.config/alacritty/catppuccin-latte.toml"
+  #"~/.config/alacritty/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+   "~/.config/alacritty/catppuccin-mocha.toml"
+  #  "/home/ary/.config/alacritty/one-dark.toml"
+]
+
 live_config_reload = true
-#theme = "Atom"
 
 [cursor.style]
 shape = "Beam"
@@ -9,19 +16,19 @@ shape = "Beam"
 size = 12
 
 [font.bold]
-family = "Iosevka Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "Iosevka Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "Iosevka Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "Iosevka Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 [scrolling]
@@ -29,13 +36,13 @@ history = 10000
 multiplier = 3
 
 [shell]
-program = "/bin/zsh"
+program = "/usr/bin/tmux"
 
 [window]
 decorations = "full"
 dynamic_padding = true
 dynamic_title = true
-opacity = 0.9
+opacity = 0.95
 
 [window.dimensions]
 columns = 120
@@ -44,3 +51,6 @@ lines = 30
 [window.padding]
 x = 3
 y = 0
+
+[env]
+TERM = "xterm-256color"

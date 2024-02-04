@@ -18,15 +18,28 @@ vim.opt.softtabstop = 4 -- see multiple spaces as tabstop
 vim.opt.expandtab = true-- converts tabs to white space
 vim.opt.foldenable = true
 vim.opt.encoding = "utf-8"
--- set.cc = 80 --set an 80 column border for good coding style
+vim.cmd([[ set colorcolumn=80 ]]) --set an 80 column border for good coding style
 vim.opt.cursorline = true --highlight cursor line
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 vim.opt.swapfile = false --disable creating swap file
 
--- robot framework
+-- ROBOT FRAMEWORK
 vim.cmd('autocmd BufNewFile,BufRead *.robot setlocal filetype=robot')
 vim.cmd('nmap <silent> <C-l> <Plug>(coc-coc-robotframework-keymap)')
 
--- set the color scheme
---vim.cmd[[colorscheme darkplus]]
+-- ============================================================================
+-- SET THE COLOR SCHEME
+-- ============================================================================
+
+-- Catppuccin color schemes are listed gradually from lighter to darker
+-- vim.cmd[[colorscheme catppuccin-latte]]
+-- vim.cmd[[colorscheme catppuccin-frappe]]
+vim.cmd[[colorscheme catppuccin-macchiato]]
+-- vim.cmd[[colorscheme catppuccin-mocha]]
+
+-- One Dark
+-- vim.cmd[[colorscheme onedark]]
+
+-- VSCode's dark theme
+-- vim.cmd[[colorscheme darkplus]]
