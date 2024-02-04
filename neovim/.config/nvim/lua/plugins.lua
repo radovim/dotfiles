@@ -11,8 +11,8 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug 'nvim-lualine/lualine.nvim' -- A blazing fast and easy to configure Neovim statusline written in Lua
     Plug 'nvim-tree/nvim-web-devicons' -- Web devicons for nvim-tree plugin
 -- Utilities
-    Plug ('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
-    Plug 'nvim-lua/plenary.nvim' -- Required dependencie for Telescope
+    Plug ('nvim-telescope/telescope.nvim', { branch = '0.1.x' })
+    Plug 'nvim-lua/plenary.nvim' -- Required dependence for Telescope
     Plug 'christoomey/vim-tmux-navigator' -- Navigate seamlessly between tmux and nvim splits with Ctlr-h/j/k/l
     Plug 'nvim-tree/nvim-tree.lua' -- A file explorer for nvim
     Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'}) -- Tree-sitter is a parser generator tool and an incremental parsing library

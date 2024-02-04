@@ -15,7 +15,9 @@ zstyle ':completion:*' rehash true
 #PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
 eval "$(starship init zsh)"
 
-source ~/.bash_aliases
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases
+[ -f ~/.bash_variables ] && source ~/.bash_variables
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
