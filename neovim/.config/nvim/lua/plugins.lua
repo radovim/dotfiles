@@ -10,6 +10,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug 'lukas-reineke/indent-blankline.nvim' -- This plugin adds indentation guides to all lines (including empty lines)
     Plug 'nvim-lualine/lualine.nvim' -- A blazing fast and easy to configure Neovim statusline written in Lua
     Plug 'nvim-tree/nvim-web-devicons' -- Web devicons for nvim-tree plugin
+    Plug 'folke/twilight.nvim' -- Twilight plugin dims inactive prtions of the code you're editing
 -- Utilities
     Plug ('nvim-telescope/telescope.nvim', { branch = '0.1.x' })
     Plug 'nvim-lua/plenary.nvim' -- Required dependence for Telescope

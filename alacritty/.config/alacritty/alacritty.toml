@@ -39,7 +39,7 @@ multiplier = 3
 program = "/usr/bin/tmux"
 
 [window]
-decorations = "full"
+decorations = "none"
 dynamic_padding = true
 dynamic_title = true
 opacity = 0.95
