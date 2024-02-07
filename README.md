@@ -14,5 +14,22 @@ git clone git@gitlab.com:vulkano22/dotfiles.git /home/$USER/.dotfiles
 cd .dotfile 
 stow .
 ```
+### Dependencies
+
+- Neovim:
+    - vim-plug
+    - fzf
+    - fd-find
+    - ripgrep
+    - gcc
+    - g++
+    - ccls
+
+- Bash and Zsh:
+    - exa
+
+- Tmux:
+    - tpm(tmux plugin manager)
+
 
 ---
