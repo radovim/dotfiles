@@ -62,6 +62,7 @@ fi
 alias gd='git diff'
 alias gs='git status'
 alias gaa='git add .'
+alias gc='git commit -m'
 
 #===================================
 #        MELEXIS RELATED
