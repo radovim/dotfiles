@@ -24,6 +24,9 @@ vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 vim.opt.swapfile = false --disable creating swap file
 
+-- Highlight all white spaces
+vim.cmd([[ set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨ ]])
+
 -- ROBOT FRAMEWORK
 vim.cmd('autocmd BufNewFile,BufRead *.robot setlocal filetype=robot')
 vim.cmd('nmap <silent> <C-l> <Plug>(coc-coc-robotframework-keymap)')

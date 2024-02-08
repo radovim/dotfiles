@@ -12,13 +12,14 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug 'nvim-tree/nvim-web-devicons' -- Web devicons for nvim-tree plugin
     Plug 'folke/twilight.nvim' -- Twilight plugin dims inactive prtions of the code you're editing
 -- Utilities
+--
+    Plug ('tpope/vim-fugitive')
     Plug ('nvim-telescope/telescope.nvim', { branch = '0.1.x' })
     Plug 'nvim-lua/plenary.nvim' -- Required dependence for Telescope
     Plug 'christoomey/vim-tmux-navigator' -- Navigate seamlessly between tmux and nvim splits with Ctlr-h/j/k/l
     Plug 'nvim-tree/nvim-tree.lua' -- A file explorer for nvim
     Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'}) -- Tree-sitter is a parser generator tool and an incremental parsing library
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-    Plug 'iamcco/markdown-preview.nvim' 
     Plug ('iamcco/markdown-preview.nvim', { ['do'] = vim.fn['mkdp#util#install()'], ['for'] = {'markdown', 'vim-plug'}})
     Plug ('tpope/vim-commentary') -- Comment stuff out. Use "gcc" to comment out a line (takes a count), "gc" to comment out the target of a motion
     Plug 'ap/vim-css-color' -- Preview colours in source code while editing

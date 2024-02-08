@@ -17,4 +17,5 @@ require("twilight").setup {
     "if_statement",
   },
   exclude = {}, -- exclude these filetypes
-}require('plugins')
+}
+require('plugins')
