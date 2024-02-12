@@ -2,12 +2,12 @@
 #          MY ALIASES
 #================================
 alias v='nvim'
+alias vim='nvim'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias ls='exa --oneline --icons' #"exa" is version of "ls" rewritten in Rust
 alias ll='exa -al --icons'
-alias myip='curl ifconfig.co'
 alias tftp='atftp'
 alias suspend='sudo systemctl suspend'
 alias homepi='ssh -p 6435 mark@192.168.0.100 -i ~/.ssh/id_ed25519'
@@ -37,7 +37,7 @@ alias feh='feh -. --edit'
 #==================================
 DISTRO=$(cat /etc/os-release  | grep -Po "(?<=^ID=)\w+")
 
-if [ "$distro" = "ubuntu" ] || [ "$DISTRO" = "debian" ]; then
+if [ "$DISTRO" = "ubuntu" ] || [ "$DISTRO" = "debian" ]; then
     alias install='sudo apt install -y'
     alias remove='sudo apt autoremove'
     alias update='sudo apt update -y'
