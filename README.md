@@ -25,6 +25,11 @@ stow .
     - g++
     - ccls
 
+    When you set up everything, run the following commands
+    from Neovim command line:
+        - `:CocInstall coc-pyright`
+        - `:CocInstall coc-clangd`
+
 - Bash and Zsh:
     - exa
 

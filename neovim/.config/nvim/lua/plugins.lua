@@ -26,7 +26,6 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 -- Completion / linters / formatters
     Plug ('windwp/nvim-autopairs')
     Plug ('neoclide/coc.nvim', {branch = 'release'}) -- A fast code completion engine
-    Plug ('dimasaryo/coc-robotframework', {['do'] = 'yarn install --frozen-lockfile && yarn build'})
     Plug ('fannheyward/coc-pyright') -- Coc extension for python
     Plug ('josa42/coc-lua') -- Coc extension for lua
 -- Git
