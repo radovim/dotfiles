@@ -59,6 +59,7 @@ fi
 #==================================
 #        GIT
 #==================================
+alias g='git'
 alias gd='git diff'
 alias gs='git status'
 alias gl='git log'
