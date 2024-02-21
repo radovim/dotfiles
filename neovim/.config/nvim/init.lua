@@ -1,4 +1,5 @@
 require('plugins')
+require('gitsigns-conf')
 require('coc-nvim')
 require('keymaps')
 require('telescope-conf')

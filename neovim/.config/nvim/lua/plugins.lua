@@ -14,6 +14,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 -- Utilities
 --
     Plug ('tpope/vim-fugitive')
+    Plug ('lewis6991/gitsigns.nvim')
     Plug ('nvim-telescope/telescope.nvim', { branch = '0.1.x' })
     Plug 'nvim-lua/plenary.nvim' -- Required dependence for Telescope
     Plug 'christoomey/vim-tmux-navigator' -- Navigate seamlessly between tmux and nvim splits with Ctlr-h/j/k/l

@@ -3,6 +3,7 @@
 #================================
 alias v='nvim'
 alias vim='nvim'
+alias c='clear'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -63,8 +64,9 @@ alias g='git'
 alias gd='git diff'
 alias gs='git status'
 alias gl='git log'
-alias gaa='git add .'
-alias gc='git commit -m'
+alias gaa='git add -A'
+alias gau='git add -u'
+alias gc='git commit'
 alias gg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
 
 #===================================
