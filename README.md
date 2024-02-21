@@ -23,12 +23,13 @@ stow .
     - ripgrep
     - gcc
     - g++
-    - ccls
+    - clangd
 
     When you set up everything, run the following commands
     from Neovim command line:
-        - `:CocInstall coc-pyright`
-        - `:CocInstall coc-clangd`
+    - `:CocInstall coc-pyright`
+    - `:CocInstall coc-clangd`
+    - `:call mkdp#util#install()`
 
 - Bash and Zsh:
     - exa
