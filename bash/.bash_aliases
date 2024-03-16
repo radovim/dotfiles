@@ -78,3 +78,8 @@ alias ptc05_build='docker run --rm -v ~/.ssh/:/root/.ssh/ -v $PWD:/root/project 
 alias flash_ptc05='STM32_Programmer_CLI -c port=swd freq=8000 -d ~/Melexis/PTC05_PXI/Release-NoBL/MIP-DEV_NOBL.hex -rst'
 alias flash_ptc05_btl='STM32_Programmer_CLI -c port=swd freq=8000 -d ~/Melexis/PTC05_Bootloader-0.6.0.hex -rst'
 alias mlxdev='cd ~/Melexis/PTC05_PXI & vim'
+
+#===================================
+#       ESPRESSIF 
+#===================================
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
