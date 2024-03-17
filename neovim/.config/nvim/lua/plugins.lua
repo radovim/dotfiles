@@ -5,6 +5,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug 'navarasu/onedark.nvim'
     Plug 'LunarVim/darkplus.nvim'
     Plug ('catppuccin/nvim', { as = 'catppuccin' })
+    Plug 'folke/tokyonight.nvim'
 -- Appearance
     Plug 'xiyaowong/transparent.nvim'
     Plug 'echasnovski/mini.animate' -- Add some animations
