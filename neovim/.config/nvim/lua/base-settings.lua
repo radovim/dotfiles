@@ -36,8 +36,9 @@ vim.cmd([[ set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:�
 -- Catppuccin color schemes are listed gradually from lighter to darker
 -- vim.cmd[[colorscheme catppuccin-latte]]
 -- vim.cmd[[colorscheme catppuccin-frappe]]
-vim.cmd[[colorscheme catppuccin-macchiato]]
+-- vim.cmd[[colorscheme catppuccin-macchiato]]
 -- vim.cmd[[colorscheme catppuccin-mocha]]
+vim.cmd[[colorscheme tokyonight]]
 
 -- One Dark
 -- vim.cmd[[colorscheme onedark]]

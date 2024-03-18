@@ -5,6 +5,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug 'navarasu/onedark.nvim'
     Plug 'LunarVim/darkplus.nvim'
     Plug ('catppuccin/nvim', { as = 'catppuccin' })
+    Plug 'folke/tokyonight.nvim'
 -- Appearance
     Plug 'xiyaowong/transparent.nvim'
     Plug 'echasnovski/mini.animate' -- Add some animations
@@ -17,7 +18,6 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug 'rcarriga/nvim-notify' -- A fancy, configurable, notification manager for NeoVim(reqired for noice.nvim to work properly)
     Plug 'MunifTanjim/nui.nvim' -- Also reqired for noice.nvim
 -- Utilities
---
     Plug ('tpope/vim-fugitive')
     Plug ('lewis6991/gitsigns.nvim')
     Plug ('nvim-telescope/telescope.nvim', { branch = '0.1.x' })
@@ -32,8 +32,19 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug 'folke/flash.nvim' -- Lets you navigate your code with search labels, enhanced character motions, and Treesitter integration.
 -- Completion / linters / formatters
     Plug ('windwp/nvim-autopairs')
-    Plug ('neoclide/coc.nvim', {branch = 'release'}) -- A fast code completion engine
-    Plug ('fannheyward/coc-pyright') -- Coc extension for python
-    Plug ('josa42/coc-lua') -- Coc extension for lua
+    -- Uncomment the two plugins below if you want to manage the language servers from neovim
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
+    -- LSP Support
+    Plug 'neovim/nvim-lspconfig'
+    -- Autocompletion
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'L3MON4D3/LuaSnip'
+    Plug ('VonHeikemen/lsp-zero.nvim', { branch = 'v3.x' })
+
+    -- Plug ('neoclide/coc.nvim', {branch = 'release'}) -- A fast code completion engine
+    -- Plug ('fannheyward/coc-pyright') -- Coc extension for python
+    -- Plug ('josa42/coc-lua') -- Coc extension for lua
 -- Git
 vim.call('plug#end')
