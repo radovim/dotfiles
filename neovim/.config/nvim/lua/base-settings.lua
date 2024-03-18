@@ -23,6 +23,8 @@ vim.opt.cursorline = true -- highlight cursor line
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 vim.opt.swapfile = false -- disable creating swap file
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.termguicolors = true -- required for nvim-notify
 vim.notify = require("notify") -- required for nvim-notify
 

@@ -30,6 +30,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug ('tpope/vim-commentary') -- Comment stuff out. Use "gcc" to comment out a line (takes a count), "gc" to comment out the target of a motion
     Plug 'ap/vim-css-color' -- Preview colours in source code while editing
     Plug 'folke/flash.nvim' -- Lets you navigate your code with search labels, enhanced character motions, and Treesitter integration.
+    Plug 'mbbill/undotree'
 -- Completion / linters / formatters
     Plug ('windwp/nvim-autopairs')
     -- Uncomment the two plugins below if you want to manage the language servers from neovim

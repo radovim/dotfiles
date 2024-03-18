@@ -4,11 +4,11 @@ local telescope = require('telescope')
 -- Include hidden files in search
 telescope.setup {pickers = {find_files = {hidden = true}}}
 
-vim.keymap.set('n', '<C-p>', builtin.find_files, {})
-vim.keymap.set('n', 'ff', builtin.find_files, {})
-vim.keymap.set('n', 'fg', builtin.git_files, {})
-vim.keymap.set('n', 'fs', builtin.grep_string, {})
-vim.keymap.set('n', 'fh', builtin.live_grep, {})
-vim.keymap.set('n', 'fb', builtin.buffers, {})
-vim.keymap.set('n', 'fr', builtin.oldfiles, {})
+vim.keymap.set('n', '<leader><C-p>', builtin.find_files, {})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
+vim.keymap.set('n', '<leader>fs', builtin.grep_string, {})
+vim.keymap.set('n', '<leader>fh', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fr', builtin.oldfiles, {})
 --vim.keymap.set('n', 'fh', builtin.help_tags, {})
