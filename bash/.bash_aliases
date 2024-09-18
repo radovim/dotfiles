@@ -7,8 +7,8 @@ alias c='clear'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls='exa --oneline --icons' #"exa" is version of "ls" rewritten in Rust
-alias ll='exa -al --icons'
+alias ls='exa --oneline' #"exa" is version of "ls" rewritten in Rust
+alias ll='exa -al'
 alias tftp='atftp'
 alias suspend='sudo systemctl suspend'
 alias homepi='ssh -p 6435 mark@192.168.0.100 -i ~/.ssh/id_ed25519'
