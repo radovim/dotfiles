@@ -1,12 +1,11 @@
 vim.opt.number = true -- show line numbers
 vim.opt.relativenumber = true
-vim.opt.shell = "/bin/bash" 
+vim.opt.shell = "/bin/bash"
 vim.o.syntax = "on"
 vim.o.filetype = "plugin"
 vim.o.filetype = "ident"
 vim.o.filetype = "on"
 vim.opt.wrap = true
-vim.opt.cursorline = true
 vim.opt.smartindent = true -- enable smart auto indentation
 vim.opt.shiftwidth = 4 -- width for autoindents
 vim.opt.hlsearch = true -- highlight search results

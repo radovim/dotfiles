@@ -3,6 +3,8 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = { "c",
                        "lua",
                        "rust",
+                       "bash",
+                       "regex",
                        "make",
                        "cmake",
                        "cpp",
@@ -47,3 +49,5 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+require 'nvim-treesitter.install'.prefer_git = false
