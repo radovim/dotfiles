@@ -1,5 +1,4 @@
 $PROFILE="$HOME\Documents\PowerShell\profile.ps1"
-$DotFilesPath="$HOME\.dotfiles"
 
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
@@ -83,7 +82,3 @@ Set-Alias -Name find -Value C:\msys64\usr\bin\find.exe
 Remove-Alias -Name where -force
 Remove-Alias -Name gl -force
 Remove-Alias -Name gc -force
-Remove-Alias -Name rm -force
-
-#$omp_config = Join-Path (Split-Path -Parent $PROFILE) 'paradox_radovim.omp.json'
-#oh-my-posh init pwsh --config $omp_config | Invoke-Expression

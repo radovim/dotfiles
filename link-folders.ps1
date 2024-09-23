@@ -1,4 +1,4 @@
-New-Item -ItemType Junction -Path C:\Users\$Env:USERNAME\Documents\PowerShell  -Target C:\Users\$Env:USERNAME\.dotfiles\PowerShell
+New-Item -ItemType SymbolicLink -Path $HOME\Documents\PowerShell  -Target (Get-Item .\PowerShell).FullName
 
-New-Item -ItemType Junction -Path C:\Users\$env:USERNAME\AppData\Local\nvim  -Target C:\Users\$Env:USERNAME\.dotfiles\neovim\.config\nvim
+New-Item -ItemType SymbolicLink -Path $HOME\AppData\Local\nvim  -Target (Get-Item  .\neovim\.config\nvim).FullName
 
