@@ -9,6 +9,7 @@
     - [Terminal-Icons](https://github.com/devblackops/Terminal-Icons)
     - [Fzf](https://github.com/junegunn/fzf#installation)
     - [PsFzf](https://github.com/kelleyma49/PSFzf)
+    - [posh-git](https://github.com/dahlbyk/posh-git)
 
 Follow these step to install all dependencies:
 ```
@@ -17,7 +18,7 @@ Follow these step to install all dependencies:
 - Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 - ExecuteInvoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 - scoop bucket add extras
-- scoop install extras/psfzf fzf zoxide terminal-icons sudo gcc
+- scoop install extras/psfzf fzf zoxide terminal-icons posh-git sudo gcc
 - cd ~/.dotfiles && ./link-folders.ps1
 ```
 

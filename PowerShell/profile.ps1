@@ -4,6 +4,8 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 Import-Module -Name Terminal-Icons
 
+Import-Module posh-git
+
 Invoke-Expression (&starship init powershell)
 
 Import-Module PSReadLine
@@ -72,7 +74,7 @@ function which ($command) {
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 
-Set-Alias -Name vim  -Value nvim
+#Set-Alias -Name vim  -Value nvim
 Set-Alias -Name v    -Value nvim
 Set-Alias -Name ll   -Value ls
 Set-Alias -Name c    -Value cls
