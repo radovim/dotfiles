@@ -23,6 +23,6 @@ Follow these step to install all dependencies:
 2) Execute:
 `scoop bucket add extras
 `scoop install extras/psfzf fzf zoxide terminal-icons posh-git sudo gcc
-`cd ~/.dotfiles && ./link-folders.ps1
+`cd ~/.dotfiles && ./link-files.ps1
 
 
