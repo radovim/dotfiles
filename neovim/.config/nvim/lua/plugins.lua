@@ -6,6 +6,7 @@ vim.call("plug#begin", "~/.config/nvim/plugged")
     Plug ("LunarVim/darkplus.nvim")
     Plug ("catppuccin/nvim", { as = "catppuccin" })
     Plug ("folke/tokyonight.nvim")
+    Plug ("craftzdog/solarized-osaka.nvim")
 -- Appearance
     Plug ("xiyaowong/transparent.nvim")
     Plug ("lukas-reineke/indent-blankline.nvim")-- This plugin adds indentation guides to all lines (including empty lines)

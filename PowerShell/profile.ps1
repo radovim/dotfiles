@@ -31,6 +31,10 @@ function gc {
     git commit
 }
 
+function gf {
+    git fetch --all
+}
+
 function nvimcfg {
     cd C:\Users\$Env:USERNAME\AppData\Local\nvim
 }
@@ -79,6 +83,7 @@ Set-Alias -Name v    -Value nvim
 Set-Alias -Name ll   -Value ls
 Set-Alias -Name c    -Value cls
 Set-Alias -Name g    -Value git
+Set-Alias -Name lg   -Value lazygit
 Set-Alias -Name tig  -Value 'C:\Program Files\Git\usr\bin\tig.exe'
 Set-Alias -Name find -Value C:\msys64\usr\bin\find.exe
 Remove-Alias -Name where -force

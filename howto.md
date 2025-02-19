@@ -25,4 +25,4 @@ Follow these step to install all dependencies:
 `scoop install extras/psfzf fzf zoxide terminal-icons posh-git sudo gcc
 `cd ~/.dotfiles && ./link-files.ps1
 
-
+## DO NOT FORGET TO EXCLUDE Starship AND PowerShell FROM WINDOWS ANITVIRUS CHECKS
