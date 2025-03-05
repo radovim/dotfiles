@@ -32,7 +32,8 @@ stow .
     - `:call mkdp#util#install()`
 
 - Bash and Zsh:
-    - exa
+   - exa
+   - zsh-autosuggestions
 
 - Tmux:
     - tpm(tmux plugin manager)
