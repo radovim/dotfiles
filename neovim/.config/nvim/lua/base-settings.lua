@@ -40,10 +40,10 @@ vim.cmd([[ set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:�
 -- vim.cmd[[colorscheme catppuccin-frappe]]
 -- vim.cmd[[colorscheme catppuccin-macchiato]]
 -- vim.cmd[[colorscheme catppuccin-mocha]]
-vim.cmd[[colorscheme tokyonight]]
+-- vim.cmd[[colorscheme tokyonight]]
 
 -- One Dark
--- vim.cmd[[colorscheme onedark]]
+ -- vim.cmd[[colorscheme onedark]]
 
 -- VSCode's dark theme
--- vim.cmd[[colorscheme darkplus]]
+vim.cmd[[colorscheme darkplus]]
