@@ -1,56 +1,45 @@
-window {
-    opacity: 0.85;
-    /* border:  2px solid white; */
-    border-radius: 8px;
-    font-family: Iosevka Nerd Font;
-    font-size: 14px;
+* {
+  font-family: Iosevka Nerd Font Mono;
+  font-size: 16;
 }
 
-/* Remove default blue border around input windows */
-:focus {
-  outline: 0 !important;
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+window {
+  margin: 1px;
+  border: 15px solid white;
+  border-radius: 10px;
 }
 
 #input {
-    padding: 2px;
-    margin: 0px;
-	color: white;
-    font-style: italic;
-    font-weight: lighter;
-	background-color: black;
+  margin: 5px;
+  border-radius: 0px;
+  border: none;
+  border-bottom: 0px solid white;
+  background-color: black;
+  color: white;
 }
 
-/* #inner-box { */
-/* 	margin: 0px; */
-/* 	color: white; */
-/* 	background-color: black; */
-/* } */
+#inner-box {
+  margin: 5px;
+  background-color: black;
+}
 
 #outer-box {
-    border: 1px solid white;
-	margin: 0px;
-	background-color: black;
-    border-radius: 5px;
+  margin: 3px;
+  padding: 20px;
+  background-color: black;
+  border-radius: 7px;
 }
 
-#selected {
-	background-color: white;
-    color: black;
+#text {
+  margin: 5px;
+  color: white;
 }
 
-/* #entry { */
-/* 	padding: 0px; */
-/*     margin: 0px; */
-/* 	background-color: black; */
-/* } */
+#entry:selected {
+  background-color: white;
+  border-radius: 7px;
+}
 
-/* #scroll { */
-/* 	margin: 5px; */
-/* 	background-color: black; */
-/* } */
-
-/* #text { */
-/* 	margin: 0px; */
-/* 	padding: 2px 2px 2px 10px; */
-/* } */
+#text:selected {
+  color: black;
+}
