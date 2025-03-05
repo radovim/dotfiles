@@ -1,7 +1,7 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
 # BEGIN_KITTY_THEME
-# VSCode_Dark
+# OneDark-Pro
 include current-theme.conf
 # END_KITTY_THEME
 
@@ -18,7 +18,7 @@ enable_audio_bell yes
 
 confirm_os_window_close 0
 
-background_opacity 1
+background_opacity 0.98
 background_blur 1
 
 shell /usr/bin/zsh
