@@ -1,12 +1,13 @@
 #================================
-#          MY ALIASES
+#        GENERAL ALIASES
 #================================
-alias v='nvim'
-alias vim='nvim'
 alias c='clear'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
+alias rgrep='rgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip --color=auto'
 alias ls='exa --oneline' #"exa" is version of "ls" rewritten in Rust
 alias ll='exa -al'
 alias tftp='atftp'
@@ -23,16 +24,20 @@ alias qtilecfg='nvim ~/.dotfiles/.config/qtile/config.py'
 alias picomcfg='nvim ~/.dotfiles/.config/picom/picom.conf'
 alias myip='curl ifconfig.co'
 alias telnet='rlwrap nc'
-alias office365-totp='ph show Novelic/Office365 | grep --color=auto -Po "(?<=OTP\sCode:\s).+" | xclip -i | xclip -o'
 alias ef='find ./ | fzf -e -x | xargs -r -o nvim'
-alias mntnextcloud='rclone mount --daemon nextcloud:/ /mnt/Nextcloud'
+alias mntpasswd='rclone mount --daemon drive:Passwords $HOME/drive --vfs-cache-mode=full'
 alias mnthomepi='sshfs homepi:/home/mark /mnt/homepi'
 alias mntwindows='sshfs windows:/C: /mnt/windows'
-alias notes='vim ~/Sync/Notes/'
 alias vpn-up='wg-quick up homepi-wg'
 alias vpn-down='wg-quick down homepi-wg'
 alias jd='cd $(find . -type d -print | fzf)'
 alias feh='feh -. --edit'
+
+#==================================
+#            HYPRLAND
+#==================================
+alias disable_laptop_screen='hyprctl keyword monitor eDP-1,disable'
+
 #==================================
 #       PACKAGE MANAGERS
 #==================================
@@ -44,6 +49,7 @@ if [ "$DISTRO" = "ubuntu" ] || [ "$DISTRO" = "debian" ]; then
     alias update='sudo apt update -y'
     alias upgrade='sudo apt update -y && sudo apt upgrade -y'
 elif [ "$DISTRO" = "arch" ]; then
+    alias paru='paru --bottomup --color=always --skipreview'
     alias install='sudo pacman -S'
     alias update='sudo pacman -Sy'
     alias upgrade='sudo pacman -Syu'
@@ -67,6 +73,7 @@ alias gl='git log'
 alias gaa='git add -A'
 alias gau='git add -u'
 alias gc='git commit'
+alias gf='git fetch --all'
 alias gg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
 
 #===================================
