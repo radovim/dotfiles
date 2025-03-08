@@ -32,6 +32,7 @@ alias vpn-up='wg-quick up homepi-wg'
 alias vpn-down='wg-quick down homepi-wg'
 alias jd='cd $(find . -type d -print | fzf)'
 alias feh='feh -. --edit'
+alias lsfont='fc-list | cut -d: -f2 | cut -d, -f1 | sort | uniq'
 
 #==================================
 #            HYPRLAND
