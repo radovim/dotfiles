@@ -1,0 +1,14 @@
+font=Iosevka Nerd Font Light 14
+padding=10
+max-icon-size=52
+background-color=#00000088
+text-color=#ffffff
+width=320
+height=200
+border-size=1
+border-color=#ffffff
+border-radius=10
+max-history=5
+sort=-time
+default-timeout=5000
+
