@@ -52,7 +52,7 @@ if [ "$DISTRO" = "ubuntu" ] || [ "$DISTRO" = "debian" ]; then
     alias update='sudo apt update -y'
     alias upgrade='sudo apt update -y && sudo apt upgrade -y'
 elif [ "$DISTRO" = "arch" ]; then
-    alias paru='paru --bottomup --color=always --skipreview'
+    alias yay='yay --color=always'
     alias install='sudo pacman -S'
     alias update='sudo pacman -Sy'
     alias upgrade='sudo pacman -Syu'
