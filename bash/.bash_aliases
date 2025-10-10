@@ -3,14 +3,16 @@
 #================================
 alias c='clear'
 alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias rgrep='rgrep --color=auto'
-alias egrep='egrep --color=auto'
+if [[ -n "$(command -v rg)" ]]; then
+    alias grep='rg --hidden'
+fi
+alias f/
 alias diff='diff --color=auto'
 alias ip='ip --color=auto'
-alias ls='ls --color=auto'
-alias la='ls -a'
-alias ll='ls -al'
+alias ls='eza --oneline --icons=always'
+alias la='eza --all --oneline --icons=always'
+alias ll='eza --all --long --icons=always'
+alias cat='bat'
 alias tftp='atftp'
 alias suspend='sudo systemctl suspend'
 alias homepi='ssh -p 6435 mark@192.168.0.100 -i ~/.ssh/id_ed25519'
@@ -44,7 +46,7 @@ alias disable_laptop_screen='hyprctl keyword monitor eDP-1,disable'
 #==================================
 #       PACKAGE MANAGERS
 #==================================
-DISTRO=$(cat /etc/os-release  | grep -Po "(?<=^ID=)\w+")
+DISTRO=$(/usr/bin/cat /etc/os-release  | grep -Po "(?<=^ID=)\w+")
 
 if [ "$DISTRO" = "ubuntu" ] || [ "$DISTRO" = "debian" ]; then
     alias install='sudo apt install -y'
@@ -56,13 +58,13 @@ elif [ "$DISTRO" = "arch" ]; then
     alias install='sudo pacman -S'
     alias update='sudo pacman -Sy'
     alias upgrade='sudo pacman -Syu'
-    alias remove='sudo pacman -Rns'
+    alias remove='sudo pacman -Runs'
     alias p='sudo pacman'
     alias pqs='sudo pacamn -Qs'
     alias pss='sudo pacman -Ss'
     alias psy='sudo pacman -Sy'
     alias psyu='sudo pacman -Syu'
-    alias prns='sudo pacman -Rns'
+    alias pruns='sudo pacman -Runs'
     alias pscc='sudo pacman -Scc'
 fi
 
