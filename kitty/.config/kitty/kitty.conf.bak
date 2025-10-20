@@ -1,16 +1,7 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
-# BEGIN_KITTY_THEME
-# VSCode_Dark
-include current-theme.conf
-# END_KITTY_THEME
 
-font_family      JetBrainsMonoNerdFontMono
-bold_font        auto
-italic_font      auto
-bold_italic_font auto
-
-font_size 14
+font_size 13
 
 cursor_shape block
 
@@ -18,9 +9,24 @@ enable_audio_bell yes
 
 confirm_os_window_close 0
 
-background_opacity 1
+background_opacity 0.95
 background_blur 1
 
+term xterm-256color
 shell /usr/bin/zsh
 
 
+
+
+# BEGIN_KITTY_FONTS
+font_family      family="Iosevka Nerd Font Mono"
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+# END_KITTY_FONTS
+
+
+# BEGIN_KITTY_THEME
+# Catppuccin-Mocha
+include current-theme.conf
+# END_KITTY_THEME

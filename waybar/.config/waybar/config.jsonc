@@ -1,15 +1,52 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    // "spacing": "4px", // Gaps between modules (4px)
-    // "margin-top": "20",
+    "spacing": 0,
+    "height": 26,
     "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["clock"],
-    "modules-right": ["tray", "idle_inhibitor", "pulseaudio", "backlight", "network", "temperature", "cpu", "memory", "battery"],
+    "modules-center": ["clock", "custom/updates"],
+    "modules-right": ["tray", "idle_inhibitor", "pulseaudio", "backlight", "network", "bluetooth", "temperature", "cpu", "memory", "battery"],
+
+    "custom/updates": {
+        "format": "{} {icon} ",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "󱉚",
+            "updated": "󰣇"
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300",
+        "on-click": "$TERMINAL ~/linux-scripts/update-arch.sh"
+    },
+
+    // "hyprland/workspaces": {
+    //     "all-outputs": true,
+    //     "format": "{name}"
+    // },
 
     "hyprland/workspaces": {
-        "all-outputs": true,
-        "format": "{name}"
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "default": "",
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5",
+                "6": "6",
+                "7": "7",
+                "8": "8",
+                "9": "9",
+                "active": "󱓻"
+            },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
     },
 
     "idle_inhibitor": {
@@ -27,18 +64,20 @@
     },
 
     "clock": {
-        "format": " {:%H:%M | %d.%B} ",
+        "format": " {:%H:%M | %d.%B |} ",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%Y-%m-%d} |"
     },
 
     "cpu": {
         "format": "   {usage}%",
-        "tooltip": true
+        "tooltip": true,
+        "on-click": "$TERMINAL btop"
     },
 
     "memory": {
-        "format": "   {}%"
+        "format": "   {}%",
+        "on-click": "$TERMINAL btop"
     },
 
     "temperature": {
@@ -47,7 +86,8 @@
         "critical-threshold": 80,
         "format-critical": "  {icon} {temperatureC}°C",
         "format": "  {icon} {temperatureC}°C",
-        "format-icons": [""]
+        "format-icons": [""],
+        "on-click": "$TERMINAL btop"
     },
 
     "backlight": {
@@ -75,10 +115,20 @@
         "format-ethernet": "  {ipaddr}/{cidr} 󰈀",
         "tooltip-format": "{ifname}: via {gwaddr}",
         "tooltip-format-wifi": "    if: {ifname}\n  ssid: {essid}\n    ip: {gwaddr}\nsignal: {signalStrength}%",
+        "on-click": "$TERMINAL impala",
         "format-linked": "  {ifname} (No IP)",
         "format-disconnected": " 󰌙 ",
-        "format-alt": "  {ifname}: {ipaddr}/{cidr}",
         "format-icons": ["󰢿", "󰢼", "󰢽", "󰢾"]
+    },
+
+    "bluetooth": {
+        "format": " ",
+        "format-disabled": " 󰂲",
+        "format-connected": " ",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueberry"
     },
 
     "pulseaudio": {
@@ -99,5 +149,19 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
+    },
+
+    "group/tray-expander": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 600,
+            "children-class": "tray-group-item"
+        },
+        "modules": ["custom/expand-icon", "tray"]
+    },
+
+    "custom/expand-icon": {
+        "format": " ",
+        "tooltip": false
     }
 }

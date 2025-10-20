@@ -13,7 +13,6 @@ zstyle :compinstall filename '/home/ary/.zshrc'
 zstyle ':completion:*' rehash true
 
 #PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
-eval "$(starship init zsh)"
 
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.bash_variables ] && source ~/.bash_variables
@@ -31,3 +30,5 @@ if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; th
 elif [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
+
+eval "$(starship init zsh)"

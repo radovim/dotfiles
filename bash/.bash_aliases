@@ -6,7 +6,6 @@ alias grep='grep --color=auto'
 if [[ -n "$(command -v rg)" ]]; then
     alias grep='rg --hidden'
 fi
-alias f/
 alias diff='diff --color=auto'
 alias ip='ip --color=auto'
 alias ls='eza --oneline --icons=always'
@@ -28,10 +27,9 @@ alias picomcfg='nvim ~/.dotfiles/.config/picom/picom.conf'
 alias myip='curl ifconfig.co'
 alias telnet='rlwrap nc'
 alias ef='find ./ | fzf -e -x | xargs -r -o nvim'
-alias mntpasswd='rclone mount --daemon drive:Passwords $HOME/drive --vfs-cache-mode=full'
-alias mnthomepi='sshfs homepi:/home/mark /mnt/homepi'
-alias mntwindows='sshfs windows:/C: /mnt/windows'
-alias mntdrive='rclone mount drive:/ ~/drive/ --vfs-cache-mode=full --daemon'
+alias mntpasswd='rclone mount --daemon gdrive:Passwords $HOME/gdrive --vfs-cache-mode=full'
+alias mntdrive='rclone mount gdrive:/ ~/gdrive/ --vfs-cache-mode=full --daemon'
+alias umountdrive='fusermount -u ~/gdrive'
 alias vpn-up='wg-quick up homepi-wg'
 alias vpn-down='wg-quick down homepi-wg'
 alias jd='cd $(find . -type d -print | fzf)'
@@ -80,16 +78,6 @@ alias gau='git add -u'
 alias gc='git commit'
 alias gf='git fetch --all'
 alias gg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
-
-#===================================
-#        MELEXIS RELATED
-#===================================
-alias ptc05_server='ssh matija@192.168.35.30'
-alias ptc05='rlwrap nc 192.168.0.10 2001'
-alias ptc05_build='docker run --rm -v ~/.ssh/:/root/.ssh/ -v $PWD:/root/project dryodon/stm32:1.1.0 bash -c "cd /root/project; make clean all"'
-alias flash_ptc05='STM32_Programmer_CLI -c port=swd freq=8000 -d ~/Melexis/PTC05_PXI/Release-NoBL/MIP-DEV_NOBL.hex -rst'
-alias flash_ptc05_btl='STM32_Programmer_CLI -c port=swd freq=8000 -d ~/Melexis/PTC05_Bootloader-0.6.0.hex -rst'
-alias mlxdev='cd ~/Melexis/PTC05_PXI & vim'
 
 #===================================
 #       ESPRESSIF 

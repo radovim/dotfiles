@@ -2,6 +2,11 @@
     font-family: "Iosevka Nerd Font";
     font-weight: normal;
     font-size: 13pt;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
 }
 
 window#waybar {
@@ -9,50 +14,61 @@ window#waybar {
     color: white;
 }
 
-#workspaces {
-    background: black;
-    border-radius: 8px;
-    margin-left: 2px;
-    margin-top: 2px;
-}
-
 #workspaces button {
-    color: #666666;
-    /* padding-left: 6px; */
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
 }
 
-#workspaces button.active {
-    color: white;
-    padding-top: 0px;
-    padding-bottom: 0px;
+#workspaces button.empty {
+  opacity: 0.5;
 }
 
-#workspaces button:hover {
-    border-width: 2px;
-    border-style: dashed;
-    background: black;
-}
+/* #workspaces { */
+/*     background: black; */
+/*     border-radius: 8px; */
+/*     margin-left: 2px; */
+/*     margin-top: 2px; */
+/* } */
+
+/* #workspaces button { */
+/*     color: #666666; */
+/*     /1* padding-left: 6px; *1/ */
+/* } */
+
+/* #workspaces button.active { */
+/*     color: white; */
+/*     padding-top: 0px; */
+/*     padding-bottom: 0px; */
+/* } */
+
+/* #workspaces button:hover { */
+/*     border-width: 2px; */
+/*     border-style: dashed; */
+/*     background: black; */
+/* } */
 
 #workspaces button.urgent {
     color: #f5186d
 }
 
-.modules-right {
-    background: black;
-    color: white;
-    border-radius: 8px;
-    margin-right: 2px;
-    margin-top: 2px;
-}
+/* .modules-right { */
+/*     background: black; */
+/*     color: white; */
+/*     border-radius: 8px; */
+/*     margin-right: 2px; */
+/*     margin-top: 2px; */
+/* } */
 
-.modules-center {
-    background: black;
-    color: white;
-    margin-top: 2px;
-    border-radius: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
+/* .modules-center { */
+/*     background: black; */
+/*     color: white; */
+/*     margin-top: 2px; */
+/*     border-radius: 8px; */
+/*     padding-left: 10px; */
+/*     padding-right: 10px; */
+/* } */
 
 #network.disconnected {
     color: red;
@@ -60,4 +76,12 @@ window#waybar {
 
 #network.wifi {
     color: #86f78d;
+}
+
+#bluetooth.connected {
+    color: #04d9ff;
+}
+
+#custom-updates {
+    color: #04d9ff;
 }
