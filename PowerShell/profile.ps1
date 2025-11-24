@@ -23,8 +23,31 @@ function gs {
     git status
 }
 
+function rmfr {
+    [CmdletBinding(SupportsShouldProcess = $true)]
+    param (
+        [Parameter(Mandatory = $true, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true)]
+        [string[]]$Path
+    )
+
+    process {
+        foreach ($item in $Path) {
+            if (Test-Path $item) {
+                try {
+                    Remove-Item -Path $item -Recurse -Force -ErrorAction Stop
+                    Write-Verbose "Successfully removed '$item'"
+                } catch {
+                    Write-Error "Failed to remove '$item': $_"
+                }
+            } else {
+                Write-Warning "Path '$item' does not exist."
+            }
+        }
+    }
+}
+
 function gl {
-    git log
+    git log --pretty=format:"%C(yellow)%h%C(reset) | %C(blue)%ar%C(reset) | %C(cyan)%an%C(reset) | %s" --date=short -n23
 }
 
 function gc {
@@ -86,6 +109,5 @@ Set-Alias -Name g    -Value git
 Set-Alias -Name lg   -Value lazygit
 Set-Alias -Name tig  -Value 'C:\Program Files\Git\usr\bin\tig.exe'
 Set-Alias -Name find -Value C:\msys64\usr\bin\find.exe
-Remove-Alias -Name where -force
 Remove-Alias -Name gl -force
 Remove-Alias -Name gc -force
