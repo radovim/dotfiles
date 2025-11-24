@@ -24,7 +24,7 @@ vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 vim.opt.swapfile = false -- disable creating swap file
 vim.opt.backup = false
-vim.opt.undodir = "$HOME/.vim/undodir"
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.termguicolors = true -- required for nvim-notify
 vim.notify = require("notify") -- required for nvim-notify
 
@@ -34,7 +34,7 @@ vim.cmd([[ set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:�
 -- ============================================================================
 -- SET THE COLOR SCHEME
 -- ============================================================================
-vim.cmd[[colorscheme solarized-osaka]]
+
 -- Catppuccin color schemes are listed gradually from lighter to darker
 -- vim.cmd[[colorscheme catppuccin-latte]]
 -- vim.cmd[[colorscheme catppuccin-frappe]]
@@ -43,7 +43,7 @@ vim.cmd[[colorscheme solarized-osaka]]
 -- vim.cmd[[colorscheme tokyonight]]
 
 -- One Dark
--- vim.cmd[[colorscheme onedark]]
+ -- vim.cmd[[colorscheme onedark]]
 
 -- VSCode's dark theme
--- vim.cmd[[colorscheme darkplus]]
+vim.cmd[[colorscheme darkplus]]
