@@ -15,6 +15,8 @@ vim.call("plug#begin", "~/.config/nvim/plugged")
     Plug ("folke/noice.nvim")-- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu
     Plug ("rcarriga/nvim-notify")-- A fancy, configurable, notification manager for NeoVim(reqired for noice.nvim to work properly)
     Plug ("MunifTanjim/nui.nvim")-- Also reqired for noice.nvim
+    Plug ("nvim-tree/nvim-web-devicons") -- Coloured icons(optional for bufferline)
+    Plug ("akinsho/bufferline.nvim", { tag = "v4.9.1" })
 -- Utilities
     Plug ("tpope/vim-fugitive")
     Plug ("lewis6991/gitsigns.nvim")
