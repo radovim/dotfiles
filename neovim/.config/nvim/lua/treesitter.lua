@@ -5,6 +5,7 @@ require'nvim-treesitter.configs'.setup {
                        "lua",
                        "rust",
                        "make",
+                       "tcl",
                        "cmake",
                        "python",
                        "toml",

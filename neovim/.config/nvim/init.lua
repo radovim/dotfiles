@@ -1,4 +1,6 @@
 require("plugins")
+
+
 require("gitsigns-conf")
 require("keymaps")
 require("telescope-conf")
@@ -13,6 +15,8 @@ require("tokyonight-conf")
 require("base-settings")
 require("catppuccin")
 require("twilight-conf")
-require("noice-conf")
+-- require("noice-conf")
 require("flash").setup()
 require("lsp-zero-conf")
+require("bufferline-conf")
+
