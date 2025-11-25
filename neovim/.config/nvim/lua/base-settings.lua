@@ -25,8 +25,6 @@ vim.opt.spelllang = "en_us"
 vim.opt.swapfile = false -- disable creating swap file
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.termguicolors = true -- required for nvim-notify
-vim.notify = require("notify") -- required for nvim-notify
 
 -- Highlight all white spaces
 vim.cmd([[ set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨ ]])
@@ -46,4 +44,6 @@ vim.cmd([[ set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:�
  -- vim.cmd[[colorscheme onedark]]
 
 -- VSCode's dark theme
-vim.cmd[[colorscheme darkplus]]
+-- vim.cmd[[colorscheme darkplus]]
+
+vim.cmd[[colorscheme gruvbox]]

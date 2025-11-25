@@ -6,15 +6,13 @@ vim.call("plug#begin", "~/.config/nvim/plugged")
     Plug ("LunarVim/darkplus.nvim")
     Plug ("catppuccin/nvim", { as = "catppuccin" })
     Plug ("folke/tokyonight.nvim")
+    Plug ("ellisonleao/gruvbox.nvim")
 -- Appearance
     Plug ("xiyaowong/transparent.nvim")
     Plug ("lukas-reineke/indent-blankline.nvim")-- This plugin adds indentation guides to all lines (including empty lines)
     Plug ("nvim-lualine/lualine.nvim")-- A blazing fast and easy to configure Neovim statusline written in Lua
-    Plug ("folke/twilight.nvim")-- Twilight plugin dims inactive prtions of the code you're editing
+    Plug ("folke/twilight.nvim")-- Twilight plugin dims inactive portions of the code you're editing
     Plug ("RRethy/vim-illuminate")-- Automatically highlighting other uses of the word under the cursor
-    Plug ("folke/noice.nvim")-- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu
-    Plug ("rcarriga/nvim-notify")-- A fancy, configurable, notification manager for NeoVim(reqired for noice.nvim to work properly)
-    Plug ("MunifTanjim/nui.nvim")-- Also reqired for noice.nvim
     Plug ("nvim-tree/nvim-web-devicons") -- Coloured icons(optional for bufferline)
     Plug ("akinsho/bufferline.nvim", { tag = "v4.9.1" })
 -- Utilities
@@ -33,15 +31,13 @@ vim.call("plug#begin", "~/.config/nvim/plugged")
 -- Completion / linters / formatters
     Plug ("windwp/nvim-autopairs")
     -- Uncomment the two plugins below if you want to manage the language servers from neovim
-    Plug ("williamboman/mason.nvim")
     Plug ("williamboman/mason-lspconfig.nvim")
-    -- LSP Support
-    Plug ("neovim/nvim-lspconfig")
+    Plug ("williamboman/mason.nvim") -- Dependency for mason-lspconfig
+    Plug ("neovim/nvim-lspconfig") -- Dependency for mason-lspconfig
     -- Autocompletion
     Plug ("hrsh7th/nvim-cmp")
     Plug ("hrsh7th/cmp-nvim-lsp")
-    Plug "L3MON4D3/LuaSnip"
-    Plug ("VonHeikemen/lsp-zero.nvim", { branch = "v3.x" })
+    Plug ("L3MON4D3/LuaSnip")
 
     -- Plug ("neoclide/coc.nvim", {branch = "release"}) -- A fast code completion engine
     -- Plug ("fannheyward/coc-pyright") -- Coc extension for python
