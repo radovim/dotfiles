@@ -111,3 +111,4 @@ Set-Alias -Name tig  -Value 'C:\Program Files\Git\usr\bin\tig.exe'
 Set-Alias -Name find -Value C:\msys64\usr\bin\find.exe
 Remove-Alias -Name gl -force
 Remove-Alias -Name gc -force
+Remove-Alias -Name man -Force
