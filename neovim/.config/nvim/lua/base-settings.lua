@@ -24,7 +24,8 @@ vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 vim.opt.swapfile = false -- disable creating swap file
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+local home = os.getenv("HOME") or os.getenv("USERPROFILE") or "C:/Temp"
+vim.opt.undodir = home .. "/.vim/undodir"
 
 -- Highlight all white spaces
 vim.cmd([[ set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨ ]])
