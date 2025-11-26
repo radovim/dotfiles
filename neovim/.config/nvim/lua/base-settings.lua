@@ -30,6 +30,8 @@ vim.opt.undodir = home .. "/.vim/undodir"
 -- Highlight all white spaces
 vim.cmd([[ set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨ ]])
 
+
+vim.diagnostic.config({ virtual_text = true})
 -- ============================================================================
 -- SET THE COLOR SCHEME
 -- ============================================================================
