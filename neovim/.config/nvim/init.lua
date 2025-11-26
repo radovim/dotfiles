@@ -15,6 +15,6 @@ require("catppuccin")
 require("twilight-conf")
 require("flash").setup()
 require("mason-lspconfig-conf")
-require("lsp-conf")
+require("nvim-cmp-conf")
 require("bufferline-conf")
 
