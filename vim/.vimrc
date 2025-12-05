@@ -1,3 +1,9 @@
+"Set gui font
+set guifont="Iosevka Nerd Font Mono"
+
+"Allows for project-local configuration files
+set exrc
+
 "Disable creating swap file
 set noswapfile 
 
@@ -24,10 +30,10 @@ set smartindent
 set cindent
 
 "Turn syntax highlighting on
-syntax on
+syntax enable
 
 "Highlight cursor line underneath the cursor vertically
-"set cursorline
+set cursorline
 
 "Set shift width to 4 spaces
 set shiftwidth=4
@@ -38,14 +44,6 @@ set tabstop=4
 "Use spaces characters instead if tabs
 set expandtab
 
-"Does NOT automatically insert the current comment leader after hitting
-"<Enter> in Insert mode and anfter hitting 'o' or 'O' in Normal mode
-set formatoptions-=cro
-
-"Enable folding
-set foldenable
-set foldnestmax=1
-
 "While searching through a file incrementally highlight matching charachters as you type
 set incsearch
 
@@ -53,7 +51,7 @@ set incsearch
 set ignorecase
 
 "Override the ignorecase option if searching for capital letters.
-"This will allow you to search specifically for capital letters.
+"This will allow you to searc hspecifically for capital letters.
 set smartcase
 
 "Show partial command you type in the last line of the screen
@@ -61,9 +59,6 @@ set showcmd
 
 "Show the mode you are on the last line
 set showmode
-
-"Show matching words during a search
-set showmatch
 
 "Use highlighting when doing a search
 set hlsearch
@@ -81,34 +76,82 @@ set wildmode=list:longest
 "Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-" Center the cursor vertically when mowing to the next word during a search
-nnoremap n nzz
-nnoremap N Nzz
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**
+
+"Tell Vim where to search for 'tags' file
+set tags=./tags;,tags;
+
+function! SearchCountInfo() abort
+    if !v:hlsearch
+        return ''
+    endif
+    try
+        " maxcount: 0 means no limit on the number of matches counted
+        " timeout: maximum time in milliseconds to spend counting
+        let l:count_info = searchcount({'maxcount': 0, 'timeout': 50})
+    catch /^Vim\%((\a\+)\)\=:\%(E486\)\@!/
+        " Handle pattern not found or other errors gracefully
+        return '[?/??]'
+    endtry
+
+    if l:count_info.total > 0
+        if l:count_info.incomplete
+            " If counting timed out or reached maxcount before completion
+            return printf('[%d/??]', l:count_info.current)
+        else
+            return printf('[%d/%d]', l:count_info.current, l:count_info.total)
+        endif
+    else
+        return '[0/0]'
+    endif
+endfunction
+
+set statusline=%<%F\ %h%w%m%r%=%{SearchCountInfo()}\ %-14.(%l,%c%V%)\ %p%%
+set laststatus=2
+
+"Use ripgrep for grepping
+if executable('rg')
+	set grepprg=rg\ --vimgrep\ --hidden\ --glob\ '!.git'
+endif
+
+"=======================
+"  Keybindings
+"=======================
 nnoremap ]] ]]zz
 nnoremap [[ [[zz
 nnoremap [] []zz
 nnoremap ][ ][zz
 nnoremap <c-d> <c-d>zz
+nnoremap <c-u> <c-u>zz
 
-"Manage split screen
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-nnoremap <c-up> <c-w>+
-nnoremap <c-down> <c-w>-
-nnoremap <c-left> <c-w>>
-nnoremap <c-right> <c-w><
+"Move line under cursor up or down
+nnoremap <A-k> :m .-2<CR>==
+nnoremap <A-j> :m .+1<CR>==
 
-"Manage tabs
-nnoremap <C-n> :tabnew<CR>
+"Auto-pair curly braces
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
 
-"Set cursor type(shape)
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
+"Move to the next and previous bugger
+nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :bp<CR>
 
-"reset the cursor on start (for older versions of vim, usually not required)
-augroup myCmds
-au!
-autocmd VimEnter * silent !echo -ne "\e[2 q"
-augroup END
+"=======================
+"  Plugins
+"=======================
+"
+call plug#begin()
+    Plug 'morhetz/gruvbox'
+    Plug 'radovim/gruber-darker-vim'
+    Plug 'ap/vim-buftabline'
+    Plug 'joshdick/onedark.vim'
+call plug#end()
+
+"====================
+"  Themes
+"===================
+let g:gruvbox_contrast_dark='hard'
+set bg=dark
+colorscheme GruberDarker
