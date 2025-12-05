@@ -1,0 +1,12 @@
+font-family = Iosevka Nerd Font Mono
+font-size = 16
+
+cursor-style = block
+confirm-close-surface = false
+
+command = /usr/bin/zsh
+
+theme = Atom One Dark
+
+# Unbind this since it is in colision with vim
+keybind = ctrl+shift+t=ignore
