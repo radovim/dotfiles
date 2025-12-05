@@ -1,3 +1,6 @@
+"Set gui font
+set guifont="Iosevka Nerd Font Mono"
+
 "Allows for project-local configuration files
 set exrc
 
@@ -57,18 +60,11 @@ set showcmd
 "Show the mode you are on the last line
 set showmode
 
-"Show matching words during a search
-"set showmatch
-
 "Use highlighting when doing a search
 set hlsearch
 
 "Set the commands to save in history default number is 20.
 set history=1000
-
-" Search down into subfolders
-" Provides tab-completion for all file-related tasks
-set path+=**
 
 "Enable auto completion menu after pressing TAB
 set wildmenu
@@ -80,13 +76,40 @@ set wildmode=list:longest
 "Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**
 
+"Tell Vim where to search for 'tags' file
 set tags=./tags;,tags;
 
-"set statusline+=%f\ %m%r%h\ %=%l,%c\ \ \ \ \ \ \ %p%%
-set statusline=%<%F\ %h%w%m%r%=%-14.(%l,%c%V%)\ %p%%
+function! SearchCountInfo() abort
+    if !v:hlsearch
+        return ''
+    endif
+    try
+        " maxcount: 0 means no limit on the number of matches counted
+        " timeout: maximum time in milliseconds to spend counting
+        let l:count_info = searchcount({'maxcount': 0, 'timeout': 50})
+    catch /^Vim\%((\a\+)\)\=:\%(E486\)\@!/
+        " Handle pattern not found or other errors gracefully
+        return '[?/??]'
+    endtry
+
+    if l:count_info.total > 0
+        if l:count_info.incomplete
+            " If counting timed out or reached maxcount before completion
+            return printf('[%d/??]', l:count_info.current)
+        else
+            return printf('[%d/%d]', l:count_info.current, l:count_info.total)
+        endif
+    else
+        return '[0/0]'
+    endif
+endfunction
+
+set statusline=%<%F\ %h%w%m%r%=%{SearchCountInfo()}\ %-14.(%l,%c%V%)\ %p%%
 set laststatus=2
-set shortmess-=S
 
 "Use ripgrep for grepping
 if executable('rg')
@@ -106,19 +129,29 @@ nnoremap <c-u> <c-u>zz
 "Move line under cursor up or down
 nnoremap <A-k> :m .-2<CR>==
 nnoremap <A-j> :m .+1<CR>==
+
+"Auto-pair curly braces
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
+
+"Move to the next and previous bugger
+nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :bp<CR>
+
 "=======================
 "  Plugins
 "=======================
 "
 call plug#begin()
     Plug 'morhetz/gruvbox'
-    Plug 'drsooch/gruber-darker-vim'
+    Plug 'radovim/gruber-darker-vim'
     Plug 'ap/vim-buftabline'
     Plug 'joshdick/onedark.vim'
 call plug#end()
 
+"====================
+"  Themes
+"===================
 let g:gruvbox_contrast_dark='hard'
 set bg=dark
 colorscheme GruberDarker
