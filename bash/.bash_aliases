@@ -76,7 +76,7 @@ fi
 alias g='git'
 alias gd='git diff'
 alias gs='git status'
-alias gl='git log'
+alias gl='git log --oneline'
 alias gaa='git add -A'
 alias gau='git add -u'
 alias gc='git commit'
