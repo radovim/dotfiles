@@ -35,6 +35,8 @@ alias vpn-down='wg-quick down homepi-wg'
 alias jd='cd $(find . -type d -print | fzf)'
 alias feh='feh -. --edit'
 alias lsfont='fc-list | cut -d: -f2 | cut -d, -f1 | sort | uniq'
+# Print calendar with Monday as first day of week
+alias cal='cal -m'
 
 command -v nvim >/dev/null 2>&1 && alias v="nvim" || {command -v vim >/dev/null 2>&1 && alias v="vim" || alias v="vi"}
 
