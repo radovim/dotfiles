@@ -1,28 +1,11 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "spacing": 0,
+    "spacing": 20,
     "height": 26,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock", "custom/updates"],
-    "modules-right": ["tray", "idle_inhibitor", "pulseaudio", "backlight", "network", "bluetooth", "temperature", "cpu", "memory", "battery"],
-
-    "custom/updates": {
-        "format": "{} {icon} ",
-        "return-type": "json",
-        "format-icons": {
-            "has-updates": "󱉚",
-            "updated": "󰣇"
-        },
-        "exec-if": "which waybar-module-pacman-updates",
-        "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300",
-        "on-click": "$TERMINAL ~/linux-scripts/update-arch.sh"
-    },
-
-    // "hyprland/workspaces": {
-    //     "all-outputs": true,
-    //     "format": "{name}"
-    // },
+    "modules-right": ["tray", "idle_inhibitor", "pulseaudio", "backlight", "network", "bluetooth", "temperature", "cpu", "memory", "hyprland/language", "battery"],
 
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -37,8 +20,7 @@
                 "6": "6",
                 "7": "7",
                 "8": "8",
-                "9": "9",
-                "active": "󱓻"
+                "9": "9"
             },
         "persistent-workspaces": {
             "1": [],
@@ -49,106 +31,22 @@
         }
     },
 
-    "idle_inhibitor": {
-        "format": "  {icon}",
-        "format-icons": {
-            "activated": "󰒳  ",
-            "deactivated": "󰒲  "
-        }
-    },
-
-    "tray": {
-        "icon-size": 17,
-        "show-passive-items": true,
-        "spacing": 10
-    },
-
     "clock": {
-        "format": " {:%H:%M | %d.%B |} ",
+        "format": "[{:%H:%M  %d.%b}]",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d} |"
+        "format-alt": "{:%Y-%m-%d}|"
     },
 
-    "cpu": {
-        "format": "   {usage}%",
-        "tooltip": true,
-        "on-click": "$TERMINAL btop"
-    },
-
-    "memory": {
-        "format": "   {}%",
-        "on-click": "$TERMINAL btop"
-    },
-
-    "temperature": {
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "thermal-zone": 6,
-        "critical-threshold": 80,
-        "format-critical": "  {icon} {temperatureC}°C",
-        "format": "  {icon} {temperatureC}°C",
-        "format-icons": [""],
-        "on-click": "$TERMINAL btop"
-    },
-
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "  {icon} {percent}%",
-        "format-icons": [""]
-    },
-
-    "battery": {
-        "bat": "BAT1",
-        "adapter": "ACAD",
-        "states": {
-            "warning": 20,
-            "critical": 5
-        },
-        "format": "  {icon} {capacity}%  ",
-        "format-charging": "  󰂄 {capacity}%  ",
-        "format-plugged": "  {capacity}%   ",
-        "format-alt": "{time} {icon}  ",
-        "format-icons": ["", "", "", "", ""]
-    },
-
-    "network": {
-        "format-wifi": " {icon} ",
-        "format-ethernet": "  {ipaddr}/{cidr} 󰈀",
-        "tooltip-format": "{ifname}: via {gwaddr}",
-        "tooltip-format-wifi": "    if: {ifname}\n  ssid: {essid}\n    ip: {gwaddr}\nsignal: {signalStrength}%",
-        "on-click": "$TERMINAL impala",
-        "format-linked": "  {ifname} (No IP)",
-        "format-disconnected": " 󰌙 ",
-        "format-icons": ["󰢿", "󰢼", "󰢽", "󰢾"]
-    },
-
-    "bluetooth": {
-        "format": " ",
-        "format-disabled": " 󰂲",
-        "format-connected": " ",
-        "tooltip-format": "{controller_alias}\t{controller_address}",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-        "on-click": "blueberry"
-    },
-
-    "pulseaudio": {
-        "scroll-step": 1, // %, can be a float
-        "format": " {icon} {volume}% {format_source} ",
-        "format-bluetooth": " {volume}% 󰥰 {format_source} ",
-        "format-bluetooth-muted": " 󰝟 M 󰥰 {format_source} ",
-        "format-muted": " 󰝟  M {format_source}  ",
-        "format-source": "  {volume}% ",
-        "format-source-muted": " M",
+    "custom/updates": {
+        "format": "{icon}",
+        "return-type": "json",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "has-updates": "󱉚 ",
+            "updated": "󰣇 "
         },
-        "on-click": "pavucontrol"
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300 --tooltip-align-columns",
+        "on-click": "$TERMINAL ~/linux-scripts/update-arch.sh"
     },
 
     "group/tray-expander": {
@@ -163,5 +61,111 @@
     "custom/expand-icon": {
         "format": " ",
         "tooltip": false
-    }
+    },
+
+    "tray": {
+        "icon-size": 17,
+        "show-passive-items": true,
+        "spacing": 10
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰒳 ",
+            "deactivated": "󰒲 "
+        }
+    },
+
+    "pulseaudio": {
+        "scroll-step": 1, // %, can be a float
+        "format": "[{icon}  {volume}% | {format_source}]",
+        "format-bluetooth": "[󰗾 {volume}% | {format_source}]",
+        "format-bluetooth-muted": "[󰗿  | {format_source}]",
+        "format-muted": "[󰝟  | {format_source}]",
+        "format-source": " {volume}%",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "󰋎",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": [""]
+    },
+
+    "network": {
+        "format-wifi": "{icon}",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀 ",
+        "tooltip-format": "{ifname}: via {gwaddr}",
+        "tooltip-format-wifi": "    if: {ifname}\n  ssid: {essid}\n    ip: {gwaddr}\nsignal: {signalStrength}%",
+        "on-click": "$TERMINAL impala",
+        "format-linked": "  {ifname} (No IP)",
+        "format-disconnected": " 󰌙 ",
+        "format-icons": ["󰢿", "󰢼", "󰢽", "󰢾"]
+    },
+
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "󰂲",
+        "format-connected": "",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueberry"
+    },
+
+    "temperature": {
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "thermal-zone": 6,
+        "critical-threshold": 80,
+        "format-critical": "{icon} {temperatureC}°C",
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": [""],
+        "on-click": "$TERMINAL btop"
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": true,
+        "on-click": "$TERMINAL btop"
+    },
+
+    "memory": {
+        "format": " {}%",
+        "on-click": "$TERMINAL btop"
+    },
+
+    "hyprland/language": {
+        "format": " {}",
+        "tooltip-format": "Language",
+        // "format": {},
+        "format-en":"en",
+        "format-sr": "срб",
+        "format-sr-latin": "srb",
+        "on-click": "hyprctl switchxkblayout all next",
+    },
+
+    "battery": {
+        "bat": "BAT1",
+        "adapter": "ACAD",
+        "states": {
+            "warning": 20,
+            "critical": 5
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
 }

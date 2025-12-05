@@ -4,8 +4,8 @@
     font-size: 13pt;
     background-color: black;
     color: white;
-    border: none;
-    border-radius: 0;
+    /* border: none; */
+    /* border-radius: 0; */
     min-height: 0;
 }
 
@@ -14,16 +14,6 @@ window#waybar {
     color: white;
 }
 
-#workspaces button {
-  all: initial;
-  padding: 0 6px;
-  margin: 0 1.5px;
-  min-width: 9px;
-}
-
-#workspaces button.empty {
-  opacity: 0.5;
-}
 
 /* #workspaces { */
 /*     background: black; */
@@ -49,9 +39,6 @@ window#waybar {
 /*     background: black; */
 /* } */
 
-#workspaces button.urgent {
-    color: #f5186d
-}
 
 /* .modules-right { */
 /*     background: black; */
@@ -69,6 +56,23 @@ window#waybar {
 /*     padding-left: 10px; */
 /*     padding-right: 10px; */
 /* } */
+#workspaces button {
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
+}
+
+#workspaces button.active {
+  border: 2px solid #04d9ff;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#workspaces button.urgent {
+    color: #f5186d;
+}
 
 #network.disconnected {
     color: red;

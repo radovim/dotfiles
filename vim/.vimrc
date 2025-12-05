@@ -1,3 +1,6 @@
+"Allows for project-local configuration files
+set exrc
+
 "Disable creating swap file
 set noswapfile 
 
@@ -24,7 +27,7 @@ set smartindent
 set cindent
 
 "Turn syntax highlighting on
-syntax on
+syntax enable
 
 "Highlight cursor line underneath the cursor vertically
 set cursorline
@@ -37,10 +40,6 @@ set tabstop=4
 
 "Use spaces characters instead if tabs
 set expandtab
-
-"Enable folding
-"set foldenable
-set foldnestmax=1
 
 "While searching through a file incrementally highlight matching charachters as you type
 set incsearch
@@ -59,13 +58,17 @@ set showcmd
 set showmode
 
 "Show matching words during a search
-set showmatch
+"set showmatch
 
 "Use highlighting when doing a search
 set hlsearch
 
 "Set the commands to save in history default number is 20.
 set history=1000
+
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**
 
 "Enable auto completion menu after pressing TAB
 set wildmenu
@@ -77,44 +80,45 @@ set wildmode=list:longest
 "Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-nnoremap n nzz
-nnoremap N Nzz
+
+set tags=./tags;,tags;
+
+"set statusline+=%f\ %m%r%h\ %=%l,%c\ \ \ \ \ \ \ %p%%
+set statusline=%<%F\ %h%w%m%r%=%-14.(%l,%c%V%)\ %p%%
+set laststatus=2
+set shortmess-=S
+
+"Use ripgrep for grepping
+if executable('rg')
+	set grepprg=rg\ --vimgrep\ --hidden\ --glob\ '!.git'
+endif
+
+"=======================
+"  Keybindings
+"=======================
 nnoremap ]] ]]zz
 nnoremap [[ [[zz
 nnoremap [] []zz
 nnoremap ][ ][zz
 nnoremap <c-d> <c-d>zz
+nnoremap <c-u> <c-u>zz
 
-"Manage split screen
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-nnoremap <c-up> <c-w>+
-nnoremap <c-down> <c-w>-
-nnoremap <c-left> <c-w>>
-nnoremap <c-right> <c-w><
-
-"Manage tabs
-nnoremap <C-n> :tabnew<CR>
-
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
-
-call plug#begin("~/.vim/plugged")
-    Plug 'arcticicestudio/nord-vim',
-    Plug 'dracula/vim', { 'as': 'dracula' }
-    Plug 'joshdick/onedark.vim',
-    Plug 'junegunn/fzf.vim'
-    Plug 'tpope/vim-fugitive',
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+"Move line under cursor up or down
+nnoremap <A-k> :m .-2<CR>==
+nnoremap <A-j> :m .+1<CR>==
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+"=======================
+"  Plugins
+"=======================
+"
+call plug#begin()
+    Plug 'morhetz/gruvbox'
+    Plug 'drsooch/gruber-darker-vim'
+    Plug 'ap/vim-buftabline'
+    Plug 'joshdick/onedark.vim'
 call plug#end()
 
-colorscheme onedark
-
-nnoremap \p :Files<cr>
-nnoremap \f :Rg<cr>
-nnoremap \g :GFiles<cr>
-nnoremap \a :Ag<cr>
+let g:gruvbox_contrast_dark='hard'
+set bg=dark
+colorscheme GruberDarker

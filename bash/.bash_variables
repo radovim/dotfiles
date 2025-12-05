@@ -1,4 +1,4 @@
-export PATH=~/.local/bin:$PATH
+export PATH=~/.local/bin:/opt/platform-tools:$PATH
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export QT_QPA_PLATFORMTHEME=qt5ct
