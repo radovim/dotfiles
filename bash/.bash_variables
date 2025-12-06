@@ -1,5 +1,5 @@
 export PATH=~/.local/bin:/opt/platform-tools:$PATH
-export VISUAL=nvim
+export VISUAL=vim
 export EDITOR="$VISUAL"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_QPA_PLATFORM=wayland
