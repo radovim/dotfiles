@@ -12,7 +12,14 @@ zstyle :compinstall filename '/home/ary/.zshrc'
 # Automatically update PATH entries
 zstyle ':completion:*' rehash true
 
-#PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+zstyle ':vcs_info:git:*' formats '[󰘬 %b]'
+
+setopt PROMPT_SUBST
+
+PROMPT='%F{green}[%n@%m]:%F{blue}%~%F{red}${vcs_info_msg_0_}%F{white}$ '
 
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.bash_variables ] && source ~/.bash_variables
@@ -31,4 +38,3 @@ elif [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-eval "$(starship init zsh)"
