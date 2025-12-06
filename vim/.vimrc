@@ -17,7 +17,7 @@ set relativenumber
 "Enable file type detection
 filetype on
 
-"Enagle plugins and load plugin for the  detected file type
+""Enagle plugins and load plugin for the  detected file type
 filetype plugin on
 
 "Load an indent file for the detected file type
@@ -79,6 +79,9 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " Search down into subfolders
 " Provides tab-completion for all file-related tasks
 set path+=**
+
+set matchpairs+=<:>,=:;
+packadd! comment
 
 "Tell Vim where to search for 'tags' file
 set tags=./tags;,tags;
@@ -145,9 +148,23 @@ nnoremap <C-p> :bp<CR>
 call plug#begin()
     Plug 'morhetz/gruvbox'
     Plug 'radovim/gruber-darker-vim'
-    Plug 'ap/vim-buftabline'
     Plug 'joshdick/onedark.vim'
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings'
+    Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
+
+
+"=============================================================================
+"  Autocplition plugin
+"=============================================================================
+let g:lsp_diagnostics_virtual_text_enabled = 0
+let g:lsp_diagnostics_echo_cursor = 1
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+"=============================================================================
 
 "====================
 "  Themes
