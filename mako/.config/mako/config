@@ -1,7 +1,8 @@
 font=Iosevka Nerd Font
 padding=10
 max-icon-size=52
-background-color=#00000080
+outer-margin=5
+background-color=#323232
 text-color=#ffffff
 width=320
 height=200
@@ -12,14 +13,14 @@ sort=-time
 default-timeout=5000
 
 [urgency=low]
-border-size=1
+border-size=2
 border-color=#ffffff
 
 [urgency=normal]
-border-size=3
-border-color=#f7f700ff
+border-size=2
+border-color=#285577
 
 [urgency=critical]
-border-size=3
+border-size=2
 border-color=#ff406cff
 text-color=#ff406c
