@@ -1,76 +1,66 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-
 # Your preferred terminal emulator
-set $term alacritty
-
+set $term foot
 # Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-#set $menu dmenu_run | xargs swaymsg exec --
-set $menu wofi --show run -i
-set $drun wofi --show drun -I -i
-
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec solaar -w hide
-exec wl-paste -t text --watch clipman store --no-persist
+set $menu wmenu-run -f "Iosevka Nerd Font 13" -p "Run: "
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Photos/wallpapers/Forest Green.jpg fill
-
-xwayland enable
-
-#
-# Example configuration:
-#
-output eDP-1 mode 2520x1680 position 0,0 scale 2
-#
+# 'swaybg' package is required for background setting
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+output * bg /home/ary/Pictures/wallpapers/pexels-eberhard-grossgasteiger-1367192.jpg fill 
+output DP-2 mode 3840x2160 scale 1.333333 enable position 0,0   
+output eDP-1 mode 2520x1680 scale 1.5 enable position 600,1620
 
+### kanshi configuration
+# Kanshi allows you to define output profiles that are automatically enabled and disabled on hotplug.
+# For instance, this can be used to turn a laptop's internal screen off when docked.
+# This is a Wayland equivalent for tools like autorandr.
+exec uwsm-app -- kanshi
+
+# gammastep - set color temperature of display according to time of day
+# adjust configuration within in ~/.config/gammastep/config.ini file
+exec gammastep
+
+exec uwsm-app -- solaar --window hide --restart-on-wake-up
 ### Idle configuration
-#
-# Example configuration:
-#
-exec swayidle -w \
-          timeout 180 'swaylock' \
-          #timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          timeout 300 'systemctl suspend-then-hibernate' \
-          #timeout 1800 'systemctl hibernate' \
-          before-sleep 'swaylock'
-#
 # This will lock your screen after 180 seconds of inactivity, then turn off
-# your displays after another 120 seconds, and turn your screens back on when
+# your displays after another 220 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -C ~/.config/swayidle/conf > ~/.swayidle.log
 
 ### Input configuration
+    input type:touchpad {
+      dwt enabled
+      tap enabled
+      natural_scroll enabled
+      middle_emulation enabled
+    }
+
+    input type:keyboard {
+      # Type 'man xkeyboard-config' and search for 'Serbian' to find layout codes
+      xkb_layout us,rs(latin),rs 
+      # Use Windows key + Space to toggle between layouts
+      xkb_options grp:win_space_toggle
+    }
+
 #
-# Example configuration:
-#
-input "10182:480:GXTP7863:00_27C6:01E0_Touchpad" {
-  dwt enabled
-  tap enabled
-  natural_scroll disable
-  middle_emulation enabled
-}
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
+# You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
+
+bindswitch --locked lid:on output eDP-1 disable
+bindswitch --locked lid:off output eDP-1 enable
 
 ### Key bindings
 #
@@ -78,17 +68,21 @@ input "10182:480:GXTP7863:00_27C6:01E0_Touchpad" {
 #
     # Start a terminal
     bindsym $mod+Shift+Return exec $term
-    bindsym $mod+Shift+f exec firefox
-    bindsym $mod+Shift+b exec brave
+
+    # Start a Firefox
+    bindsym $mod+f exec firefox
+
+    # Start Nautilus file manager
+    bindsym $mod+n exec nautilus
 
     # Kill focused window
     bindsym $mod+Shift+c kill
 
     # Start your launcher
-    bindsym $mod+p exec $menu
+    bindsym $mod+d exec $menu
 
-    # Start your rofi style launcher
-    bindsym $mod+r exec $drun
+    # Reload knashi daemon and apply appropriate profile
+    bindsym $mod+Shift+p exec kanshictl reload
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -101,7 +95,7 @@ input "10182:480:GXTP7863:00_27C6:01E0_Touchpad" {
     bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+q exit
 #
 # Moving around:
 #
@@ -168,13 +162,13 @@ input "10182:480:GXTP7863:00_27C6:01E0_Touchpad" {
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    bindsym $mod+Shift+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+alt focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -190,14 +184,6 @@ input "10182:480:GXTP7863:00_27C6:01E0_Touchpad" {
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
-#
-# Keyboard shortcuts:
-#
-    bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
 #
 # Resizing containers:
 #
@@ -221,44 +207,58 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-#bindsym $mod+r mode "resize"
-bindsym $mod+Ctrl+$left resize shrink width 10px
-bindsym $mod+Ctrl+$down resize grow height 10px
-bindsym $mod+Ctrl+$up resize shrink height 10px
-bindsym $mod+Ctrl+$right resize grow width 10px
+bindsym $mod+r mode "resize"
+#
+# Utilities:
+#
+    # Special keys to adjust volume via PulseAudio
+    bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ 5%-
+    bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 5%+
+    bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_SOURCE@ toggle
+    # Special keys to adjust brightness via brightnessctl
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 10%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 10%+
+    # Special key to take a screenshot with grim
+    bindsym Print exec grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png --early-exit --copy-command=wl-copy
+    bindsym $mod+Shift+s exec grim -g "$(slurp -c '##ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png --early-exit --copy-command=wl-copy
 
-for_window [class="^.*"] border pixel 3
-gaps inner 2
-
-# Thin borders:
-smart_borders on
-smart_gaps off
-
-blur on
-blur_xray off
-blur_passes 2
-blur_radius 5
-corner_radius 5
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-# bar {
-#     position top
-#     font Iosevka Nerd Font
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
-#     colors {
-#         statusline #ffffff
-#         background #000000
-#         inactive_workspace #000000 #000000 #5c5c5c
-#         focused_workspace #ffffff #000000 #ffffff
-#     }
-# }
 bar {
-     swaybar_command waybar
-}
-include /etc/sway/config.d/*
+    position top
+    font Iosevka Nerd Font 14
+    position bottom
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while ~/.config/sway/status.sh; do sleep 0.1; done
+    # status_command i3blocks
 
+    # diable vertical scrolling
+    bindsym button4 nop
+    bindsym button5 nop
+    # diable horizontal scrolling
+    bindsym button6 nop
+    bindsym button7 nop
+
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #323232ff #323232ff #5c5c5c
+    }
+
+    # Hopefully, the following two lines will take effect when this PR is merged:
+    # https://github.com/swaywm/sway/pull/8920.
+    tray_bindcode 272 ContextMenu
+    tray_bindcode 273 Activate
+    # Alternatively
+    tray_bindsym BTN_LEFT ContextMenu
+    tray_bindsym BTN_RIGHT Activate
+    separator_symbol "------"
+    tray_padding 7
+    icon_theme Adwaita
+}
+
+include /etc/sway/config.d/*
