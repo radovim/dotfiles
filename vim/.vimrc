@@ -14,6 +14,9 @@ set nocompatible
 set number
 set relativenumber
 
+"Switch between buffers without saving changes immediately
+set hidden
+
 "Enable file type detection
 filetype on
 
@@ -128,6 +131,9 @@ nnoremap [] []zz
 nnoremap ][ ][zz
 nnoremap <c-d> <c-d>zz
 nnoremap <c-u> <c-u>zz
+nnoremap n nzz
+nnoremap N Nzz
+
 
 "Move line under cursor up or down
 nnoremap <A-k> :m .-2<CR>==
@@ -169,6 +175,6 @@ inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 "====================
 "  Themes
 "===================
-let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_dark='medium'
 set bg=dark
-colorscheme GruberDarker
+colorscheme gruvbox
