@@ -1,0 +1,28 @@
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+(column-number-mode 1)
+(global-display-line-numbers-mode) ; Enable line numbers globally
+(setq display-line-numbers-type 'relative)  ; Set to relative
+(add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-16"))
+(setq inhibit-splash-screen t) ; Disables startup splash screen
+(setq tab-width 4)
+
+(ido-mode 1)
+(setq ido-enable-flex-matching t) ; Enable flaxible matching
+(setq ido-everywhere t) ; Enable ido mode for other commands
+(ido-mode 'both) ; Use both file and buffer switching
+
+(load-theme 'gruber-darker t)
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-,") 'duplicate-line)
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load-file custom-file)
+
+(use-package smex :ensure t)
+(use-package gruber-darker-theme :ensure t)

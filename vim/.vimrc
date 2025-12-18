@@ -84,7 +84,6 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 set path+=**
 
 set matchpairs+=<:>,=:;
-packadd! comment
 
 "Tell Vim where to search for 'tags' file
 set tags=./tags;,tags;
@@ -156,6 +155,7 @@ call plug#begin()
     Plug 'radovim/gruber-darker-vim'
     Plug 'joshdick/onedark.vim'
     Plug 'prabirshrestha/vim-lsp'
+    Plug 'tpope/vim-commentary'
     Plug 'mattn/vim-lsp-settings'
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'

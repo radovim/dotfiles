@@ -39,6 +39,9 @@ alias lsfont='fc-list | cut -d: -f2 | cut -d, -f1 | sort | uniq'
 alias cal='cal -m'
 
 command -v nvim >/dev/null 2>&1 && alias v="nvim" || {command -v vim >/dev/null 2>&1 && alias v="vim" || alias v="vi"}
+alias em='emacsclient -c -nw'
+alias emacs='emacsclient -c -nw'
+
 
 #==================================
 #            HYPRLAND

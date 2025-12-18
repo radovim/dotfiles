@@ -19,7 +19,7 @@ zstyle ':vcs_info:git:*' formats '[󰘬 %b]'
 
 setopt PROMPT_SUBST
 
-PROMPT='%F{green}[%n@%m]:%F{blue}%~%F{red}${vcs_info_msg_0_}%F{white}$ '
+PROMPT='%F{green}[%n@%m]%F{blue}%~%F{red}${vcs_info_msg_0_}%F{white}$ '
 
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.bash_variables ] && source ~/.bash_variables

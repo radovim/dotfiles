@@ -40,6 +40,9 @@ exec uwsm-app -- solaar --window hide --restart-on-wake-up
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -C ~/.config/swayidle/conf > ~/.swayidle.log
 
+# Start emacs server
+exec uwsm-app -- emacs --daemon
+
 ### Input configuration
     input type:touchpad {
       dwt enabled
