@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
 layout_array=($(swaymsg -t get_inputs -r | jq -r 'map(select(.xkb_layout_names != null) | .xkb_layout_names) | unique | .[0] | .[]' | sed 's/ /-/' ))
 layout_index=($(swaymsg -t get_inputs -r | jq -r 'map(select(.xkb_active_layout_index != null) | .xkb_active_layout_index) | unique | .[0]' ))

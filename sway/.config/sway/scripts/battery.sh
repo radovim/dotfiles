@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 battery_name="/org/freedesktop/UPower/devices/battery_BAT1"
 percentage=$(upower -i $battery_name | grep percentage | awk '{print $2}')

@@ -19,21 +19,24 @@ set $menu wmenu-run -f "Iosevka Nerd Font 13" -p "Run: "
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # 'swaybg' package is required for background setting
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-output * bg /home/ary/Pictures/wallpapers/pexels-eberhard-grossgasteiger-1367192.jpg fill 
+output * bg ~/Pictures/wallpapers/pexels-eberhard-grossgasteiger-1367192.jpg fill 
 output DP-2 mode 3840x2160 scale 1.333333 enable position 0,0   
 output eDP-1 mode 2520x1680 scale 1.5 enable position 600,1620
 
+seat seat0 xcursor_theme Adwaita 24
+
+exec mako
 ### kanshi configuration
 # Kanshi allows you to define output profiles that are automatically enabled and disabled on hotplug.
 # For instance, this can be used to turn a laptop's internal screen off when docked.
 # This is a Wayland equivalent for tools like autorandr.
-exec uwsm-app -- kanshi
+exec kanshi
 
 # gammastep - set color temperature of display according to time of day
 # adjust configuration within in ~/.config/gammastep/config.ini file
 exec gammastep
 
-exec uwsm-app -- solaar --window hide --restart-on-wake-up
+exec solaar --window hide --restart-on-wake-up
 ### Idle configuration
 # This will lock your screen after 180 seconds of inactivity, then turn off
 # your displays after another 220 seconds, and turn your screens back on when
@@ -41,7 +44,7 @@ exec uwsm-app -- solaar --window hide --restart-on-wake-up
 exec swayidle -C ~/.config/swayidle/conf > ~/.swayidle.log
 
 # Start emacs server
-exec uwsm-app -- emacs --daemon
+exec emacs --daemon
 
 ### Input configuration
     input type:touchpad {
@@ -75,6 +78,9 @@ bindswitch --locked lid:off output eDP-1 enable
     # Start a Firefox
     bindsym $mod+f exec firefox
 
+    # Start an emacs
+    bindsym $mod+Shift+e exec emacs
+    
     # Start Nautilus file manager
     bindsym $mod+n exec nautilus
 
@@ -215,10 +221,14 @@ bindsym $mod+r mode "resize"
 # Utilities:
 #
     # Special keys to adjust volume via PulseAudio
-    bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ 5%-
-    bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 5%+
-    bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_SOURCE@ toggle
+    # bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
+    # bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ 5%-
+    # bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 5%+
+    # bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_SOURCE@ toggle
+    bindsym --locked XF86AudioMute exec amixer sset Master toggle
+    bindsym --locked XF86AudioLowerVolume exec amixer sset Master 5%-
+    bindsym --locked XF86AudioRaiseVolume exec amixer sset Master 5%+
+    bindsym --locked XF86AudioMicMute exec amixer sset Capture toggle
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 10%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 10%+

@@ -3,23 +3,16 @@
 #================================
 alias c='clear'
 alias grep='grep --color=auto'
-if [[ -n "$(command -v rg)" ]]; then
-  alias grep='rg --hidden'
-fi
 alias diff='diff --color=auto'
 alias ip='ip --color=auto'
 alias ls='eza --oneline --icons=always'
 alias la='eza --all --oneline --icons=always'
 alias ll='eza --all --long --header --icons=always'
-alias cat='bat'
 alias tftp='atftp'
 alias suspend='sudo systemctl suspend'
 alias homepi='ssh -p 6435 mark@192.168.0.100 -i ~/.ssh/id_ed25519'
 alias weather='curl wttr.in'
 alias rsync='rsync -av --info=progress2 --info=name0'
-alias fd='fd --hidden'
-alias rg='rg --hidden'
-alias mkdir='mkdir -p'
 alias alacrittycfg='nvim ~/.config/alacritty/alacritty.toml'
 alias nvimcfg='nvim ~/.dotfiles/.config/nvim/init.vim'
 alias qtilecfg='nvim ~/.dotfiles/.config/qtile/config.py'
@@ -38,10 +31,8 @@ alias lsfont='fc-list | cut -d: -f2 | cut -d, -f1 | sort | uniq'
 # Print calendar with Monday as first day of week
 alias cal='cal -m'
 
-command -v nvim >/dev/null 2>&1 && alias v="nvim" || {command -v vim >/dev/null 2>&1 && alias v="vim" || alias v="vi"}
+command -v {command -v vim >/dev/null 2>&1 && alias v="vim" || alias v="vi"}
 alias em='emacsclient -c -nw'
-alias emacs='emacsclient -c -nw'
-
 
 #==================================
 #            HYPRLAND

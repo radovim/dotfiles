@@ -118,7 +118,7 @@ set laststatus=2
 
 "Use ripgrep for grepping
 if executable('rg')
-	set grepprg=rg\ --vimgrep\ --hidden\ --glob\ '!.git'
+	set grepprg=rg\ --vimgrep\ --hidden
 endif
 
 "=======================
@@ -150,6 +150,9 @@ nnoremap <C-p> :bp<CR>
 "  Plugins
 "=======================
 "
+" Enable build in Man plugin
+runtime! ftplugin/man.vim
+
 call plug#begin()
     Plug 'morhetz/gruvbox'
     Plug 'radovim/gruber-darker-vim'
@@ -177,4 +180,4 @@ inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 "===================
 let g:gruvbox_contrast_dark='medium'
 set bg=dark
-colorscheme gruvbox
+colorscheme GruberDarker
