@@ -4,6 +4,4 @@ New-Item -ItemType SymbolicLink -Path $HOME\AppData\Local\nvim  -Target (Get-Ite
 
 New-Item -ItemType SymbolicLink -Path $HOME\.vimrc -Target (Get-Item .\vim\.vimrc).FullName
 
-New-Item -ItemType SymbolicLink -Path $HOME\AppData\Roaming\.emacs.d\init.el -Target (Get-Item .\emacs\.emacs.d\init.el).FullName
-
-New-Item -ItemType SymbolicLink -Path $HOME\AppData\Roaming\.emacs.d\custom.el -Target (Get-Item .\emacs\.emacs.d\custom.el).FullName
+New-Item -ItemType SymbolicLink -Path $HOME\.emacs -Target (Get-Item .\emacs\.emacs).FullName

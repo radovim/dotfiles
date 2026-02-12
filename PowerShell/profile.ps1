@@ -6,7 +6,8 @@ Import-Module -Name Terminal-Icons
 
 Import-Module posh-git
 
-Invoke-Expression (&starship init powershell)
+#Invoke-Expression (&starship init powershell)
+#oh-my-posh init pwsh | Invoke-Expression
 
 Import-Module PSReadLine
 Set-PSReadLineOption -EditMode Emacs
@@ -18,6 +19,32 @@ Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 Set-PsFzfOption -EnableAliasFuzzyEdit
 Set-PsFzfOption -EnableAliasFuzzyGitStatus
+
+function prompt {
+    $gitBranch = ''
+    if (& git rev-parse --is-inside-work-tree 2>$null) {
+        $gitBranch = & git rev-parse --abbrev-ref HEAD 2>$null
+        if ($gitBranch) {
+            $gitBranch = "[$gitBranch]"
+        }
+    }
+
+    # Define colors
+    $username = $env:USERNAME
+    $hostname = $env:COMPUTERNAME
+    $currentDir = Get-Location
+    # Replace home path with tilde
+    $homePath = [System.Environment]::GetFolderPath('UserProfile')
+    $currentDir = $currentDir.ToString().Replace($homePath, '~')
+
+    $green = "`e[32m"
+    $blue = "`e[34m"
+    $reset = "`e[0m"
+    $red = "`e[31m"
+
+    # Construct the prompt
+    "$green$username@${hostname}:$blue$currentDir$red$gitBranch$reset$ "
+}
 
 function gs {
     git status

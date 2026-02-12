@@ -175,6 +175,7 @@ inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 "====================
 "  Themes
 "===================
+set termguicolors
 let g:gruvbox_contrast_dark='medium'
 set bg=dark
-colorscheme gruvbox
+colorscheme GruberDarker
