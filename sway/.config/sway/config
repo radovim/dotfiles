@@ -46,6 +46,9 @@ exec swayidle -C ~/.config/swayidle/conf > ~/.swayidle.log
 # Start emacs server
 exec emacs --daemon
 
+# Start a polit
+exec /usr/libexec/xfce-polkit
+
 ### Input configuration
     input type:touchpad {
       dwt enabled

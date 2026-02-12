@@ -1,11 +1,11 @@
 profile docked {
 
-    output DP-2 mode 3840x2160 scale 1.333333 enable position 0,0   
+    output DP-2 mode 3840x2160 scale 1.5 enable position 0,0   
     output eDP-1 disable
 }
 
 profile extend {
-    output DP-2 mode 3840x2160 scale 1.333333 enable position 0,0   
+    output DP-2 mode 3840x2160 scale 1.5 enable position 0,0   
     output eDP-1 mode 2520x1680 scale 1.5 enable position 600,1620
 }
 
