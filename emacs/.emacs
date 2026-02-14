@@ -115,7 +115,10 @@
 
 ;; Add MELPA repo
 (require 'package)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
 ;; Install and set GruberDarker theme
@@ -158,3 +161,13 @@
   :bind
   (("M-<up>" . move-text-up)
    ("M-<down>" . move-text-down)))
+
+;; Highlights occurrences of the current selected region
+(use-package region-occurrences-highlighter 
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'region-occurrences-highlighter-mode)
+  (add-hook 'org-mode-hook #'region-occurrences-highlighter-mode)
+  (add-hook 'text-mode-hook #'region-occurrences-highlighter-mode))
+(define-key region-occurrences-highlighter-nav-mode-map "\M-n" 'region-occurrences-highlighter-next)
+(define-key region-occurrences-highlighter-nav-mode-map "\M-p" 'region-occurrences-highlighter-prev)
