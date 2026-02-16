@@ -29,7 +29,7 @@
 (setq display-line-numbers-type 'relative)
 
 ;; Set some cool font
-(add-to-list 'default-frame-alist '(font . "Iosevka NFM-15"))
+(add-to-list 'default-frame-alist '(font . "Iosevka NFM-14"))
 
 ; Disables startup splash screen
 (setq inhibit-splash-screen t)
