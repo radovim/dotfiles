@@ -229,8 +229,8 @@ bindsym $mod+r mode "resize"
     # bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 5%+
     # bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_SOURCE@ toggle
     bindsym --locked XF86AudioMute exec amixer sset Master toggle
-    bindsym --locked XF86AudioLowerVolume exec amixer sset Master 5%-
-    bindsym --locked XF86AudioRaiseVolume exec amixer sset Master 5%+
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
     bindsym --locked XF86AudioMicMute exec amixer sset Capture toggle
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 10%-
