@@ -9,8 +9,12 @@ set $left h
 set $down j
 set $up k
 set $right l
+
 # Your preferred terminal emulator
 set $term foot
+
+# Your preferred browser
+set $browser ungoogled-chromium --incognito
 # Your preferred application launcher
 set $menu wmenu-run -i -f "Iosevka Nerd Font 13" -p "Run: "
 
@@ -86,8 +90,8 @@ bindswitch --locked lid:off output eDP-1 enable
     # Start a terminal
     bindsym $mod+Shift+Return exec $term
 
-    # Start a Firefox
-    bindsym $mod+f exec firefox
+    # Start a Browser
+    bindsym $mod+f exec $browser
 
     # Start an emacs
     bindsym $mod+Shift+e exec emacs
