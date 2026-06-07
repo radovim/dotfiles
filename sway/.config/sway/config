@@ -12,7 +12,7 @@ set $right l
 # Your preferred terminal emulator
 set $term foot
 # Your preferred application launcher
-set $menu wmenu-run -f "Iosevka Nerd Font 13" -p "Run: "
+set $menu wmenu-run -i -f "Iosevka Nerd Font 13" -p "Run: "
 
 ### Output configuration
 #
@@ -23,9 +23,14 @@ output * bg ~/Pictures/wallpapers/pexels-eberhard-grossgasteiger-1367192.jpg fil
 output DP-2 mode 3840x2160 scale 1.333333 enable position 0,0   
 output eDP-1 mode 2520x1680 scale 1.5 enable position 600,1620
 
+default_border pixel 1
+
 seat seat0 xcursor_theme Adwaita 24
 
 exec mako
+exec syncthing serve --no-browser
+exec nextcloud --background
+
 ### kanshi configuration
 # Kanshi allows you to define output profiles that are automatically enabled and disabled on hotplug.
 # For instance, this can be used to turn a laptop's internal screen off when docked.
@@ -36,13 +41,16 @@ exec kanshi
 # adjust configuration within in ~/.config/gammastep/config.ini file
 exec gammastep
 
-exec solaar --window hide --restart-on-wake-up
+# exec solaar --window hide --restart-on-wake-up
+exec logitune --minimized
 ### Idle configuration
 # This will lock your screen after 180 seconds of inactivity, then turn off
 # your displays after another 220 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -C ~/.config/swayidle/conf > ~/.swayidle.log
 
+# Srat NetworkManager applet(tray indicator)
+exec nm-applet
 # Start emacs server
 exec emacs --daemon
 
@@ -94,7 +102,7 @@ bindswitch --locked lid:off output eDP-1 enable
     bindsym $mod+d exec $menu
 
     # Reload knashi daemon and apply appropriate profile
-    bindsym $mod+Shift+p exec kanshictl reload
+    bindsym $mod+Shift+p exec ~/linux-scripts/kanshi-cycle.sh
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -236,9 +244,8 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 10%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 10%+
     # Special key to take a screenshot with grim
-    bindsym Print exec grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png --early-exit --copy-command=wl-copy
-    bindsym $mod+Shift+s exec grim -g "$(slurp -c '##ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png --early-exit --copy-command=wl-copy
-
+    bindsym Print exec grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/screenshot-$(date '+%Y%m%d-%H:%M:%S').png --early-exit --copy-command=wl-copy
+    bindsym $mod+Shift+s exec grim -g "$(slurp -c '##ff0000ff')" -t ppm - | satty --filename - --fullscreen --input-scale=1 --zoom-factor=1 --output-filename ~/Pictures/Screenshots/screenshot-$(date '+%Y%m%d-%H:%M:%S').png --early-exit --copy-command=wl-copy
 #
 # Status Bar:
 #
