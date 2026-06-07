@@ -171,3 +171,67 @@
   (add-hook 'text-mode-hook #'region-occurrences-highlighter-mode))
 (define-key region-occurrences-highlighter-nav-mode-map "\M-n" 'region-occurrences-highlighter-next)
 (define-key region-occurrences-highlighter-nav-mode-map "\M-p" 'region-occurrences-highlighter-prev)
+
+(use-package tree-sitter
+  :mode (("\\.tsx\\'" . tsx-ts-mode)
+         ("\\.js\\'"  . typescript-ts-mode)
+         ("\\.mjs\\'" . typescript-ts-mode)
+         ("\\.mts\\'" . typescript-ts-mode)
+         ("\\.cjs\\'" . typescript-ts-mode)
+         ("\\.ts\\'"  . typescript-ts-mode)
+         ("\\.jsx\\'" . tsx-ts-mode)
+         ("\\.json\\'" .  json-ts-mode)
+         ("\\.Dockerfile\\'" . dockerfile-ts-mode))
+  :ensure t)
+
+(use-package tree-sitter-langs
+  :ensure t
+  :after tree-sitter)
+
+(use-package treesit-auto
+  :config
+  (global-treesit-auto-mode))
+
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook (
+         (typescript-ts-mode . lsp)
+         (tsx-ts-mode . lsp)
+         (python-mode . lsp)
+         (c-ts-mode . lsp)
+         (c++-ts-mode . lsp)
+         (bash-ts-mode . lsp))
+  :commands (lsp lsp-deferred))
+
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
+
+(use-package company
+  :ensure t
+  :defer t  ; Defer loading until a hook runs or a command is called
+  :diminish company-mode ; Optional: hides ' company' from the mode line if you prefer
+  :config
+  (global-company-mode) ; Activates company-mode globally after the package is loaded
+  :bind
+  ;; Optional: Rebind Tab to either complete or indent
+  ;; (global-set-key (kbd "<tab>") #'company-indent-or-complete-common) ; this might conflict with other modes
+  
+  ;; Keybindings within the completion buffer
+  (:map company-active-map
+        ("C-n" . company-select-next-or-abort) ; Select next candidate
+        ("C-p" . company-select-previous-or-abort) ; Select previous candidate
+        ("M-n" . company-select-next) ; Alternate keybinding for next
+        ("M-p" . company-select-previous) ; Alternate keybinding for previous
+        ("TAB" . company-complete-common-or-cycle) ; Complete common part or cycle
+        ("RET" . company-complete-selection)) ; Insert selected candidate
+  
+  ;; Custom settings
+  :custom
+  (company-idle-delay 0.1) ; Adjust the delay before completion starts
+  (company-minimum-prefix-length 2) ; Minimum characters before completion starts
+  (company-selection-wrap-around t) ; Wrap around when selecting candidates
+  )
