@@ -10,6 +10,9 @@ set noswapfile
 "Disable compatibility with vi
 set nocompatible 
 
+"Make backspace work over indent, line breaks, and insert start
+set backspace=indent,eol,start
+
 "Enable line numbers
 set number
 set relativenumber
