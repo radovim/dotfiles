@@ -171,3 +171,41 @@
   (add-hook 'text-mode-hook #'region-occurrences-highlighter-mode))
 (define-key region-occurrences-highlighter-nav-mode-map "\M-n" 'region-occurrences-highlighter-next)
 (define-key region-occurrences-highlighter-nav-mode-map "\M-p" 'region-occurrences-highlighter-prev)
+
+(use-package typescript-mode
+  :ensure t
+  :mode ("\\.ts\\'" "\\.js\\'")
+  :hook (typescript-mode . lsp-deferred))
+
+(use-package lsp-mode
+  :ensure t
+  :init  (setq lsp-keymap-prefix "C-c l")
+  :commands (lsp lsp-deferred)
+  :config
+  (setq lsp-enable-snippet t) ; Enable snippet support
+  ;; Add other general lsp-mode configurations here
+  )
+
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode
+  )
+
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
+
+(use-package company
+  ;; Download company if not found
+  :ensure t
+  :init
+  ;; Turn on company after emacs starts up
+  (global-company-mode))
+
+(use-package lsp-pyright
+  :ensure t
+  :custom (lsp-pyright-langserver-command "pyright") ;; or basedpyright
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp-deferred))))
