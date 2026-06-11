@@ -128,9 +128,32 @@ function which ($command) {
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 
-#Set-Alias -Name vim  -Value nvim
+function ll {
+    param(
+            [Parameter(ValueFromRemainingArguments = $true)]
+            [string[]] $Path
+         )
+    if ($Path.Count -gt 0) {
+        eza -la --icons -- $Path
+    } else {
+        eza -la --icons
+    }
+}
+
+function ls {
+    param(
+            [Parameter(ValueFromRemainingArguments = $true)]
+            [string[]] $Path
+         )
+    if ($Path.Count -gt 0) {
+        eza --oneline --icons -- $Path
+    } else {
+        eza --oneline --icons
+    }
+}
+
+Remove-Alias -Name ls
 Set-Alias -Name v    -Value nvim
-Set-Alias -Name ll   -Value ls
 Set-Alias -Name c    -Value cls
 Set-Alias -Name g    -Value git
 Set-Alias -Name lg   -Value lazygit
@@ -139,3 +162,4 @@ Set-Alias -Name find -Value C:\msys64\usr\bin\find.exe
 Remove-Alias -Name gl -force
 Remove-Alias -Name gc -force
 Remove-Alias -Name man -Force
+Remove-Alias -Name rm
