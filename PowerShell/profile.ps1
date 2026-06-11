@@ -50,6 +50,15 @@ function gs {
     git status
 }
 
+function gd {
+    param(
+        [Parameter(ValueFromRemainingArguments = $true)]
+        [string[]] $GitDiffArgs
+    )
+
+    git diff @GitDiffArgs
+}
+
 function rmfr {
     [CmdletBinding(SupportsShouldProcess = $true)]
     param (
@@ -131,25 +140,29 @@ function which ($command) {
 function ll {
     param(
             [Parameter(ValueFromRemainingArguments = $true)]
-            [string[]] $Path
+            [string[]] $EzaArgs
          )
-    if ($Path.Count -gt 0) {
-        eza -la --icons -- $Path
-    } else {
-        eza -la --icons
-    }
+        
+    eza -la --icons $EzaArgs
 }
 
 function ls {
     param(
             [Parameter(ValueFromRemainingArguments = $true)]
-            [string[]] $Path
+            [string[]] $EzaArgs
          )
-    if ($Path.Count -gt 0) {
-        eza --oneline --icons -- $Path
-    } else {
-        eza --oneline --icons
-    }
+
+    [string[]]$ExpandedArgs = @(
+        foreach ($arg in $EzaArgs) {
+            if ($arg -match '^~(?=[\\/]|$)') {
+                $arg -replace '^~', $HOME
+            } else {
+                $arg
+            }
+        }
+    )
+
+    eza --oneline --icons @ExpandedArgs
 }
 
 Remove-Alias -Name ls
