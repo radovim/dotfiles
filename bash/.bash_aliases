@@ -5,12 +5,12 @@ alias c='clear'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias ip='ip --color=auto'
-alias ls='eza --oneline --icons=always'
-alias la='eza --all --oneline --icons=always'
-alias ll='eza --all --long --header --icons=always'
+
+command -v eza  >/dev/null 2>&1 && alias ls='eza --oneline --icons=always'
+command -v eza  >/dev/null 2>&1 && alias ll='eza --all --long --header --icons=always' || alias ll='ls -alh'
+
 alias tftp='atftp'
 alias suspend='sudo systemctl suspend'
-alias homepi='ssh -p 6435 mark@192.168.0.100 -i ~/.ssh/id_ed25519'
 alias weather='curl wttr.in'
 alias rsync='rsync -av --info=progress2 --info=name0'
 alias alacrittycfg='nvim ~/.config/alacritty/alacritty.toml'
@@ -31,8 +31,9 @@ alias lsfont='fc-list | cut -d: -f2 | cut -d, -f1 | sort | uniq'
 # Print calendar with Monday as first day of week
 alias cal='cal -m'
 
-command -v {command -v vim >/dev/null 2>&1 && alias v="vim" || alias v="vi"}
+command -v vim >/dev/null 2>&1 && alias v="vim" || alias v="vi"
 alias em='emacsclient -c -nw'
+alias incr_font='setfont /usr/share/consolefonts/Lat15-Terminus32x16.psf.gz'
 
 #==================================
 #            HYPRLAND
