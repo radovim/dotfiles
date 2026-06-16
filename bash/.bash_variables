@@ -1,6 +1,7 @@
-export PATH=~/.local/bin:/opt/platform-tools:$PATH
+export PATH=~/.local/bin:/opt/platform-tools:~/opt/Telegram:/home/$USER/.opencode/bin:$PATH
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_QPA_PLATFORM=wayland
 export QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor
+

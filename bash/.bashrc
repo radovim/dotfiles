@@ -10,6 +10,10 @@ PS1='[\[\033[00;32m\]\u@\h\[\033[00m\]]\[\033[00;34m\]\w\[\033[00m\]\[\033[00;31
 
 export EDITOR=/usr/bin/nvim
 
+# Ctrl+S typically suspends (freezes) terminal output, a legacy feature for flow control
+# This line disables that legacy feature, which allows Ctrl+S to be used for forward-search-history
+stty -ixon
+
 #Start fish
 #~/.scripts/fish_abbrs_auto_gen.sh
 #fish
