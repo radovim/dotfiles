@@ -1,10 +1,10 @@
 $PROFILE="$HOME\Documents\PowerShell\profile.ps1"
 
-Invoke-Expression (& { (zoxide init powershell | Out-String) })
+# Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
-Import-Module -Name Terminal-Icons
+# Import-Module -Name Terminal-Icons
 
-Import-Module posh-git
+# Import-Module posh-git
 
 #Invoke-Expression (&starship init powershell)
 #oh-my-posh init pwsh | Invoke-Expression
@@ -15,7 +15,7 @@ Set-PSReadLineOption -BellStyle None
 Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
 Set-PSReadLineOption -PredictionSource History
 
-Import-Module PSFzf
+# Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 Set-PsFzfOption -EnableAliasFuzzyEdit
 Set-PsFzfOption -EnableAliasFuzzyGitStatus
@@ -132,40 +132,40 @@ function buildge {
     .\release_proto.bat digits:4790
 }
 
-function which ($command) {
-  Get-Command -Name $command -ErrorAction SilentlyContinue |
-    Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
-}
+# function which ($command) {
+#   Get-Command -Name $command -ErrorAction SilentlyContinue |
+#     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+# }
 
-function ll {
-    param(
-            [Parameter(ValueFromRemainingArguments = $true)]
-            [string[]] $EzaArgs
-         )
+# function ll {
+#     param(
+#             [Parameter(ValueFromRemainingArguments = $true)]
+#             [string[]] $EzaArgs
+#          )
         
-    eza -la --icons $EzaArgs
-}
+#     eza -la --icons $EzaArgs
+# }
 
-function ls {
-    param(
-            [Parameter(ValueFromRemainingArguments = $true)]
-            [string[]] $EzaArgs
-         )
+# function ls {
+#     param(
+#             [Parameter(ValueFromRemainingArguments = $true)]
+#             [string[]] $EzaArgs
+#          )
 
-    [string[]]$ExpandedArgs = @(
-        foreach ($arg in $EzaArgs) {
-            if ($arg -match '^~(?=[\\/]|$)') {
-                $arg -replace '^~', $HOME
-            } else {
-                $arg
-            }
-        }
-    )
+#     [string[]]$ExpandedArgs = @(
+#         foreach ($arg in $EzaArgs) {
+#             if ($arg -match '^~(?=[\\/]|$)') {
+#                 $arg -replace '^~', $HOME
+#             } else {
+#                 $arg
+#             }
+#         }
+#     )
 
-    eza --oneline --icons @ExpandedArgs
-}
+#     eza --oneline --icons @ExpandedArgs
+# }
 
-Remove-Alias -Name ls
+# Remove-Alias -Name ls
 Set-Alias -Name v    -Value nvim
 Set-Alias -Name c    -Value cls
 Set-Alias -Name g    -Value git
