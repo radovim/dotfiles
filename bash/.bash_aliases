@@ -6,8 +6,8 @@ alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias ip='ip --color=auto'
 
-command -v eza  >/dev/null 2>&1 && alias ls='eza --oneline --icons=always'
-command -v eza  >/dev/null 2>&1 && alias ll='eza --all --long --header --icons=always' || alias ll='ls -alh'
+command -v eza  >/dev/null 2>&1 && alias ls='eza --oneline --icons=always' || alias ls='ls --color=always'
+command -v eza  >/dev/null 2>&1 && alias ll='eza --all --long --header --icons=always' || alias ll='ls -alh --color=always'
 
 alias tftp='atftp'
 alias suspend='sudo systemctl suspend'

@@ -21,6 +21,7 @@ stty -ixon
 #if [ -z "$TMUX" ]; then
 #    tmux attach -t default || tmux new -s default
 #fi
+
 # Use bash-completion, if available, and avoid double-sourcing
 [[ $PS1 &&
   ! ${BASH_COMPLETION_VERSINFO:-} &&
@@ -30,4 +31,5 @@ stty -ixon
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
+
+[ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
