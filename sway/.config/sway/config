@@ -76,8 +76,10 @@ exec /usr/libexec/xfce-polkit
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
 
-bindswitch --locked lid:on output eDP-1 disable
-bindswitch --locked lid:off output eDP-1 enable
+# bindswitch --locked lid:on output eDP-1 disable
+# bindswitch --locked lid:off output eDP-1 enable
+bindswitch --reload --locked lid:on  exec ~/.config/sway/scripts/lid.sh close
+bindswitch --reload --locked lid:off exec ~/.config/sway/scripts/lid.sh open
 
 ### Key bindings
 #
