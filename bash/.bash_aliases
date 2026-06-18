@@ -30,6 +30,7 @@ alias feh='feh -. --edit'
 alias lsfont='fc-list | cut -d: -f2 | cut -d, -f1 | sort | uniq'
 # Print calendar with Monday as first day of week
 alias cal='cal -m'
+alias genpass='pwgen -cnysB 30 1 | wl-copy --sensitive'
 
 command -v vim >/dev/null 2>&1 && alias v='vim' || alias v='vi'
 alias em='emacsclient -c -nw'
