@@ -1,0 +1,54 @@
+# ---- Background --------------------------------------------------------------
+image=/home/radovim/Pictures/wallpapers/4k/colorful_mountains.png
+scaling=fill
+
+# Hyprland: blur_passes=1, contrast=1, brightness=0.5, vibrancy=0.2
+# swaylock-effects has no brightness/contrast/vibrancy effects, only blur,
+# pixelate, greyscale, vignette. Mimic blur + dim with vignette.
+effect-blur=7x1
+effect-vignette=0.5:0.5
+
+# ---- General -----------------------------------------------------------------
+ignore-empty-password
+show-failed-attempts
+# no fade-in/out, no grace, no loading bar to disable in swaylock-effects
+
+# ---- Indicator (== hyprlock input-field) -------------------------------------
+indicator
+indicator-radius=120
+indicator-thickness=2
+indicator-caps-lock
+disable-caps-lock-text
+
+# Idle / no-input
+ring-color=00000000
+inside-color=00000033
+line-color=00000000
+text-color=cdd6f4
+key-hl-color=cc8822
+bs-hl-color=cc8822
+separator-color=00000000
+
+# Verifying (== hyprlock check_color rgb(204,136,34))
+ring-ver-color=cc8822
+inside-ver-color=00000033
+line-ver-color=00000000
+text-ver-color=cdd6f4
+
+# Wrong / cleared / caps-lock variants -- keep style consistent
+ring-wrong-color=cc8822
+inside-wrong-color=00000033
+line-wrong-color=00000000
+text-wrong-color=cdd6f4
+
+ring-clear-color=cc8822
+inside-clear-color=00000033
+line-clear-color=00000000
+text-clear-color=cdd6f4
+
+ring-caps-lock-color=cc8822
+inside-caps-lock-color=00000033
+line-caps-lock-color=00000000
+
+font=JetBrainsMono Nerd Font
+font-size=22
