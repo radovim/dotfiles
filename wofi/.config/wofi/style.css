@@ -1,32 +1,30 @@
 * {
   font-family: Iosevka Nerd Font Mono;
-  font-size: 13pt;
-  height: 15px;
+  font-size: 14pt;
 }
 
 window {
   margin: 1px;
-  border: 15px solid white;
+  border: 1px solid white;
   border-radius: 10px;
 }
 
 #input {
-  margin: 5px;
-  border-radius: 0px;
-  border: none;
-  border-bottom: 0px solid white;
+  margin: 0px 0px 20px 0px;
+  border-radius: 10px;
+  border: 1px solid gray;
   background-color: black;
   color: white;
 }
 
 #inner-box {
-  margin: 5px;
+  margin: 1px;
   background-color: black;
 }
 
 #outer-box {
   margin: 3px;
-  padding: 20px;
+  padding: 10px;
   background-color: black;
   border-radius: 7px;
 }
@@ -37,10 +35,10 @@ window {
 }
 
 #entry:selected {
-  background-color: white;
-  border-radius: 7px;
+  background-color: gray;
+  border-radius: 10px;
 }
 
 #text:selected {
-  color: black;
+  color: white;
 }
