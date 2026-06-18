@@ -9,6 +9,7 @@ volume=$(~/.config/sway/scripts/volume.sh)
 packages=$(~/.config/sway/scripts/packages.sh)
 _sep_="|"
 echo "$volume $_sep_ $network_status $_sep_ $packages $_sep_ $kb_layout $_sep_ $battery_status $_sep_   $date    $time $_sep_"
+sleep 1
 
 
 

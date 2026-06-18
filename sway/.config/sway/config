@@ -1,7 +1,10 @@
 # Read `man 5 sway` for a complete reference.
 
+#
 ### Variables
 #
+set $QT_QPA_PLATFORMTHEME qt5ct
+
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -16,7 +19,8 @@ set $term foot
 # Your preferred browser
 set $browser ungoogled-chromium --incognito
 # Your preferred application launcher
-set $menu wmenu-run -i -f "Iosevka Nerd Font 13" -p "Run: "
+# set $menu wmenu-run -i -f "Iosevka Nerd Font 13" -p "Run: "
+set $menu wofi --show drun
 
 ### Output configuration
 #
@@ -31,9 +35,15 @@ default_border pixel 1
 
 seat seat0 xcursor_theme Adwaita 24
 
+# Launches apps from .desktop files found in ~/.config/autostart
+exec dex --autostart --environment sway --search-paths /home/$USER/.config/autostart
+
+# Propagate display variables to D-Bus for xdg-desktop-portal backends
+exec dbus-update-activation-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
 exec mako
-exec syncthing serve --no-browser
-exec nextcloud --background
+# exec syncthing serve --no-browser
+# exec nextcloud --background
 
 ### kanshi configuration
 # Kanshi allows you to define output profiles that are automatically enabled and disabled on hotplug.
@@ -46,7 +56,7 @@ exec kanshi
 exec gammastep
 
 # exec solaar --window hide --restart-on-wake-up
-exec logitune --minimized
+# exec logitune --minimized
 ### Idle configuration
 # This will lock your screen after 180 seconds of inactivity, then turn off
 # your displays after another 220 seconds, and turn your screens back on when
@@ -54,12 +64,12 @@ exec logitune --minimized
 exec swayidle -C ~/.config/swayidle/conf > ~/.swayidle.log
 
 # Srat NetworkManager applet(tray indicator)
-exec nm-applet
+# exec nm-applet
 # Start emacs server
 exec emacs --daemon
 
 # Start a polit
-exec /usr/libexec/xfce-polkit
+# exec /usr/libexec/xfce-polkit
 
 ### Input configuration
     input type:touchpad {
@@ -281,8 +291,8 @@ bar {
     tray_bindcode 272 ContextMenu
     tray_bindcode 273 Activate
     # Alternatively
-    tray_bindsym BTN_LEFT ContextMenu
-    tray_bindsym BTN_RIGHT Activate
+    tray_bindsym BTN_RIGHT ContextMenu
+    tray_bindsym BTN_LEFT Activate
     separator_symbol "------"
     tray_padding 7
     icon_theme Adwaita
